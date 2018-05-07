@@ -1,3 +1,27 @@
+$.afui.useOSThemes=false;
+    $.afui.loadDefaultHash=true;
+    $.afui.autoLaunch=false;
+
+    //check search
+    var search=document.location.search.toLowerCase().replace("?","");
+    if(search.length>0)
+    {
+
+       $.afui.useOSThemes=true;
+        if(search=="win8")
+            $.os.ie=true;
+        else if(search=="firefox")
+            $.os.fennec="true"
+        $.afui.ready(function(){
+            $(document.body).get(0).className=(search);
+        });
+    }
+
+/******** jahangirEditedStart16Feb apipath *****************/
+
+//var  apipath ='http://127.0.0.1:8000/acme/medSearch/'
+
+
 //var apiPath='http://127.0.0.1:8000/check_in/syncmobile_checkIn/';
 var apiPath='http://w02.yeapps.com/checkin/syncmobile_checkIn/';
 
