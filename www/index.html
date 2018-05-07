@@ -35,90 +35,35 @@
     <script type="text/javascript" charset="utf-8" src="src/af.lockscreen.js"></script>
 	
 	<script src="checkIn.js"></script>
-    <style>
-		body{ font-size:80%;}
-		.bgc{color:red;}
-		.error{ background-color:#ffe6e6; color:#e60000; padding:10px; border-bottom:1px solid #ff0000; border-top:1px solid #ff0000; font-size:16px; border-radius:5px;}
-		.success{ background-color:#ecf9f2; color:#339966; padding:10px; border-bottom:1px solid #66cc99; border-top:1px solid #66cc99; font-size:16px; border-radius:5px;}
-		
-		.parent{ height:330px; border:1px solid #00bfff; border-radius:5px; margin:1%; box-shadow:3px 3px 3px #b3e4ff; overflow:hidden; }
-		
-		
-		label{ width:100%; text-align:left;}
-		input.toggle + label > span{ background-color:#00a6ff;}
-		.tabbed { margin:0px;}
-		.button{ border:none;}
-		
-		.slide-right-out,.slide-left-out {
-			-webkit-animation:cover;
-			animation:cover;			
+    function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+     </script>
+	 <style>
+		.bgc{
+			color:red;
 		}
-		.input-field {
-    width: 50%;
-    height: auto;
-    padding: 12px;
-    overflow: hidden;
-}
-.backcss
-{
-	width:20px;
-	background-color:#00BECC;
-	padding-top:20px;
-    padding-bottom: 22px;
-	-webkit-border-radius: .6em;
-	border-radius: .6em;
-}
-.exitcss
-{
-	width:10px;
-	height:10px;
-	background-color:#FFFFFF;
-	-webkit-border-radius: .6em;
-}
-.inp_brd{border-bottom:0px!important;padding-bottom:10px!important;margin-bottom:10px!important;background-color: #fff!important;
-	border: 0!important;
-	border-radius: 5px!important;
-	/*box-shadow: 1px 2px 3px #098!important*/
-	
-}
-#screensettings_id li{border-bottom:none!important; background:#e6f6ff;padding-left:20px; list-style:none}
-
-#screensettings_id input {
-	/* border-bottom: 0px !important; */
-	padding-bottom: 13px !important;
-	margin-bottom: 10px !important;
-	background-color: #fff !important;
-	border: 1px solid lightblue;
-	border-radius: 5px !important;
-	
-}
-/*#screensettings_id li table tbody tr td1{width:30% !important}
-#screensettings_id li table tbody tr td2{width:30% !important}
-#screensettings_id li table tbody tr  input{width:100% !important}*/
-#success_msg {
-	font-size: 15px;
-	color: green;
-	font-weight: bold;
-	bottom: 80px;
-	padding:7px 13px;
-}
-#error_msg {
-	font-size: 15px;
-	color:#F5575A;
-	font-weight: bold;
-	bottom: 80px;
-	padding:7px 13px;
-}
-.view footer > a:not(.button) {
-	color: #fff!important;
-	padding-top: 3px;
-	position: absolute;
-	top: 8px;
-	left: 150px;
-}	
-		
-    </style>
-
+		/********** jahangirEditedStart16Feb css ***************/
+		#imgStyle img{
+			border: 3px solid #ffffff;
+			border-radius: 5px;
+			width:56px !important;
+			height:70px !important;
+		}
+		section { text-align: center; margin: 50px 0 0 0; }
+      .panzoom-parent { border: 2px solid #333; }
+      .panzoom-parent .panzoom { border: 2px dashed #666; }
+      .buttons { margin: 40px 0 0; }
+	  
+	  #users ul{margin:50px auto auto auto; padding:0; list-style:none}
+	  #users ul li {
+			border-bottom: 1px dashed #0088D1 !important;
+			overflow: hidden;
+			padding: 10px 0px 0px 0px;
+		}
+		/********** jahangirEditedEnd16Feb css ***************/
+	 </style>
  <script>
 
    $(document).ready(function(){ 
