@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+
+<head>
+
+    <title>M-Reporting</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui"> 
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="build/icons.css" />
+
+    <link rel="stylesheet" type="text/css" href="build/af.ui.css" />
+
+     <script type="text/javascript" charset="utf-8" src="lib/jquery.min.js"></script>
+    <script src="jquery.panzoom.js"></script>
+    <script src="jquery.mousewheel.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/fastclick.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.shim.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.ui.js"></script>
+
+
+    <script src="src/af.desktopBrowsers.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.actionsheet.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.animation.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.touchEvents.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.popup.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.drawer.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.toast.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.animateheader.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.splashscreen.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.swipereveal.js"></script>
+    <script type="text/javascript" charset="utf-8" src="src/af.lockscreen.js"></script>
+	
+	<script src="checkIn.js"></script>
+    <style>
+		body{ font-size:80%;}
+		.bgc{color:red;}
+		.error{ background-color:#ffe6e6; color:#e60000; padding:10px; border-bottom:1px solid #ff0000; border-top:1px solid #ff0000; font-size:16px; border-radius:5px;}
+		.success{ background-color:#ecf9f2; color:#339966; padding:10px; border-bottom:1px solid #66cc99; border-top:1px solid #66cc99; font-size:16px; border-radius:5px;}
+		
+		.parent{ height:330px; border:1px solid #00bfff; border-radius:5px; margin:1%; box-shadow:3px 3px 3px #b3e4ff; overflow:hidden; }
+		
+		
+		label{ width:100%; text-align:left;}
+		input.toggle + label > span{ background-color:#00a6ff;}
+		.tabbed { margin:0px;}
+		.button{ border:none;}
+		
+		.slide-right-out,.slide-left-out {
+			-webkit-animation:cover;
+			animation:cover;			
+		}
+		.input-field {
+    width: 50%;
+    height: auto;
+    padding: 12px;
+    overflow: hidden;
+}
+.backcss
+{
+	width:20px;
+	background-color:#00BECC;
+	padding-top:20px;
+    padding-bottom: 22px;
+	-webkit-border-radius: .6em;
+	border-radius: .6em;
+}
+.exitcss
+{
+	width:10px;
+	height:10px;
+	background-color:#FFFFFF;
+	-webkit-border-radius: .6em;
+}
+.inp_brd{border-bottom:0px!important;padding-bottom:10px!important;margin-bottom:10px!important;background-color: #fff!important;
+	border: 0!important;
+	border-radius: 5px!important;
+	/*box-shadow: 1px 2px 3px #098!important*/
+	
+}
+#screensettings_id li{border-bottom:none!important; background:#e6f6ff;padding-left:20px; list-style:none}
+
+#screensettings_id input {
+	/* border-bottom: 0px !important; */
+	padding-bottom: 13px !important;
+	margin-bottom: 10px !important;
+	background-color: #fff !important;
+	border: 1px solid lightblue;
+	border-radius: 5px !important;
+	
+}
+/*#screensettings_id li table tbody tr td1{width:30% !important}
+#screensettings_id li table tbody tr td2{width:30% !important}
+#screensettings_id li table tbody tr  input{width:100% !important}*/
+#success_msg {
+	font-size: 15px;
+	color: green;
+	font-weight: bold;
+	bottom: 80px;
+	padding:7px 13px;
+}
+#error_msg {
+	font-size: 15px;
+	color:#F5575A;
+	font-weight: bold;
+	bottom: 80px;
+	padding:7px 13px;
+}
+.view footer > a:not(.button) {
+	color: #fff!important;
+	padding-top: 3px;
+	position: absolute;
+	top: 8px;
+	left: 150px;
+}	
+		
+    </style>
+
+ <script>
+
+   $(document).ready(function(){ 
+  			$("#wait_image_login").hide();
+			$("#loginButton").show();
+	   	   		
+	   		$("#load_image").hide();
+			$('#screensettings_id').val('');
+	
+//			
+//			$("#error_login").html("");
+//			
+//			dVersion='localStorage.d_version';
+//
+//			upVersion=localStorage.up_version;
+//			
+//			
+//			version_check(dVersion, upVersion);
+//   		
+			var screensettings_id_ob=$('#screensettings_id');				
+			screensettings_id_ob.empty()
+			screensettings_id_ob.append(localStorage.screensettingsdataShow);
+	  		
+			localStorage.picFlag=0
+	   		
+	   	//	alert (localStorage.synced)
+//			if (localStorage.synced!='YES'){
+//			
+//				$.afui.loadContent("#login",true,true,'right');	
+//		}
+     	});	
+		
+    </script>
+
+</head>
+
+
+
+
+
+<body  >
+<div id="splashscreen" class='ui-loader heavy'>
+    M-Reporting
+    <br>
+    <br>
+    <span ><img style="" width="50px;" src="loading.gif" alt=""></span>
+    <h1>Starting ......</h1>
+</div>
+    
+<!--  //============Login page Start-->
+  
+<div class="view" id="loginView">
+    <div class="pages">
+        <header style="background:darkseagreen;">
+        	<h2 align="center" style="font-size:18px;  font-weight: bold; color:#F8F8F8; text-align:center;margin: 0px;padding: 9px">Login</h2> 
+            <a data-role="button"  onClick="exit()"  ><img src="exit.png" style="width:30px;height:30px;  padding-top:10px; position: absolute;top: 0px;right: 2px"> </a>
+            
+        </header> 
+        <div class="panel" id="login" style="background-color:#e6f6ff;padding:0px">
+        	<br><br><br>
+            <div id="error_login" style="color:#C00;"></div>
+            <br> 
+
+            <div class="input-group" style="border:none" >
+                <form style="background-color:#e6f6ff" id="emp">
+                	<input name="cid" id="cid" class="inp_brd" type="text" placeholder="CID" value="">	
+                    <input type="text" name="user_id" id="user_id" class="inp_brd"   placeholder="User ID" value="">
+                    <input type="password" name="user_pass" id="user_pass" class="inp_brd" placeholder="Password" value="">
+                </form>						
+            </div>
+            <div id="loginErr"></div>
+            <input type="submit" id="loginButton" onClick="check_user()"  style="width: 100%;height: 50px;background-color:skyblue;color: #FFF;font-size: 20px;border: none;" value="     Sync     "   />
+            
+            </br></br></br>
+            <div align="center" id="wait_image_login"><img style="width:70px;height:auto" src="loading.gif" alt=""></div>
+        </div>
+    </div>
+    
+        <footer style="background:darkseagreen;border: none;">
+        	<h2 align="center" style="font-size:18px; font-weight:normal; color:#F8F8F8; text-align:center;margin: 0px;padding: 9px"></h2> 
+            
+        </footer> 
+</div>
+
+<!--//==============================smartView Page=================-->
+      
+<div class="view" id="pageHome">
+    <div class="pages">
+        <header align="center" style="background: darkseagreen;" >
+        	<h1 style="text-align:center;width: 100%;height: auto;color: #fff;padding: 10px; margin: 0px;">M-Reporting-B01</h1>
+        	<a data-role="button"  onClick="login_page()"  ><img src="unilogo13.png" style="width:35px;height:35px;  padding-top:10px; top: 0px;right: 2px; padding-left: 5px;" ></a>
+        </header>
+        <div class="panel" id="pageHomeView" style="background: #e6f6ff;"><br><br><br>
+        <div  style="overflow-y: scroll; width: 100%; height: 500px;background: #e6f6ff;overflow-x: hidden;touch-action: pan-y">
+           <table style=" border-style:hidden" width="100%" border="0" cellpadding="0" cellspacing="0" >
+        		<tr >
+           			<td  align="center" style="  width:300px; height:20px; color:black; font-size:20px; ">
+            			ক্যামেরা আইকন এ টাচ করে ছবি তুলুন 
+           			</td>
+            	</tr>
+            
+				
+				<tr>
+					<td  align="left" style="  width:300px; height:70px; color:black; font-size:20px;">
+					&nbsp;&nbsp;&nbsp;&nbsp;<img src="camera.png" width="40" height="40" alt="TakePic" onClick="takePicture()" >
+
+					</td>
+				</tr>
+            </table>
+        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+              	<tr>
+					<td  width="50%" >
+						 <img  width="100" height="100" alt="" id="myImage1" ;>
+						 <img  width="100" height="100" alt="" id="myImage2" ;>
+						 <img  width="100" height="100" alt="" id="myImage3" ;>
+						 <input name="prPhoto1" id="prPhoto1" type="hidden" value="" >
+						 <input name="prPhoto2" id="prPhoto2" type="hidden" value="" >
+						 <input name="prPhoto3" id="prPhoto3" type="hidden" value="" >
+					</td>   
+             	</tr>
+            </table>
+			<ul id="screensettings_id" style=" background:transparent; padding-top:6px"></ul>
+			<div id="btn">
+			
+            <div id="success_msg" align="center"></div>
+			<div id="error_msg" align="center"></div>
+				<input type="submit" id="SaveButton" onClick="submit_data()"  style="width:100%; height:50px; background:skyblue;color: #FFF; font-size:20px;  border: none;" value="     Submit     "   /> 
+				</br></br>
+				<input type="submit" id="submitSaveBtn" onClick="savedVisit()"  style="width:100%; height:50px; background:skyblue;color: #FFF; font-size:20px;  border: none;" value="     Save     "   /> 
+				</br></br>
+				<input type="submit" id="showSubmitSaveBtn" onClick="show_savedVisit()"  style="width:100%; height:50px; background:skyblue;color: #FFF; font-size:20px;  border: none;" value="     Show Save     "   /> 
+				</br></br></br></br>
+			</div>
+			
+			<div id="load_image" align="center" >
+				<img height="70px" width="70px" src="loading.gif">
+			</div></br></br></br>
+			
+		</div>
+
+            
+         <footer align="center" style="background:darkseagreen;border-top:2px solid  #fff">
+        <h1 style="	text-align: center;	width: 100%;height: auto;padding: 6px;"></h1>
+        </footer>
+        </br>
+    </div>
+ </div>  
+</div> 
+
+<!--//==============================smartView Page End=================-->   
+
+
+<!--//============================== msg_page Start=================-->
+      
+<div class="view" id="msg_pageView">
+    <div class="pages">
+    	<header align="center" style="background: darkseagreen;">
+        	<h2 style="text-align:center;width: 100%;height: auto;color: #fff;padding: 10px; margin: 0px;">M-Reporting-B01</h2>
+        </header><br><br><br>
+        <div class="panel" id="msg_page" style="background-color:#e6f6ff;"><br><br><br><br><br><br><br><br>
+           <table width="100%" border="0">
+           		<tr>
+                	<td align="center">
+                		<div id="visit_success" style="background-image:url(result_back.png); background-repeat:no-repeat; width:300px; height:200px; color:#FFF; font-size:20px;"  align="center"></br>
+                			Thank you for using our<br>service.<br><br><br>We will contact you soon.
+                		</div>
+                	</td>
+                </tr>
+          	</table>
+		</div>
+    </div>
+ 	<footer align="center" style="background:darkseagreen;border-top:2px solid  #fff">
+         <a  onClick="homePage()" class="icon home" ></a>
+        <h1 style="	text-align: center;	width: 100%;height: auto;padding: 6px;"></h1>
+    </footer>
+</div> 
+
+<!--//==============================msg_page End=================--> 
+
+
+
+
+<!-- ============Saved visit Page Start================-->
+<div class="view" id="savedVisitView">
+    <div class="pages">
+    	<header align="center" style="background: darkseagreen;" >
+        	<h2 style="text-align:center;width: 100%;height: auto;color: #fff;padding: 10px; margin: 0px;">M-Reporting-B01</h2>
+        	
+        </header>
+        <div class="panel" id="savedVisit_page" style="background-color:#e6f6ff;"> 
+            <span> <br/><br/><br/><br/></span>				
+					
+            <div id="savedVisitRecord" align="center">  </div><br/><br/>
+			<div id="dataerrorsave" style="color:#006291"> </div><br/><br/><br/><br/><br/>
+        </div>
+                
+    </div>
+         
+    <footer align="center" style="background:darkseagreen;border-top:2px solid  #fff">
+         <a  onClick="homePage()" class="icon home" ></a>
+        <h1 style="	text-align: center;	width: 100%;height: auto;padding: 6px;"></h1>
+    </footer>
+</div>
+        
+<!--=====================Saved visit Page end=============-->
+  
+ <script type="text/javascript" src="phonegap.js"></script>
+
+</body>
+
+</html>
