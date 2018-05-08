@@ -56,6 +56,7 @@ $.afui.useOSThemes=false;
 
 
 var apiPath='http://w02.yeapps.com/checkin/syncmobile_checkIn/';
+var apipath_image='http://w02.yeapps.com/checkin/syncmobile_checkIn/imageupload/'
 
 
 
@@ -550,7 +551,7 @@ navigator.camera.getPicture( cameraSuccess, cameraError, {
 function cameraSuccess(uri){  
 	//localStorage.picFlag=0
 	var picNo=parseInt(localStorage.picFlag)+1 
-	
+	localStorage.picFlag=picNo
 	if (picNo==1){
 		var imageDiv="myImage1" 
 		var imageText="prPhoto1"
@@ -614,6 +615,7 @@ function upload_image(imageURI, imageName) {
 	options.chunkedMode = false;
 	
     var ft = new FileTransfer();
+	
      ft.upload(imageURI, encodeURI(apipath_image),winProfile,failProfile,options);
 	 
 }
