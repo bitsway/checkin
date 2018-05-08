@@ -600,23 +600,28 @@ function cameraError(message){
 /************  Image **************/
 
 function upload_image(imageURI, imageName) {
-   // alert (localStorage.photo_submit_url)
-   //alert (imageURI+' |  '+imageName)
-	var options = new FileUploadOptions();
-    options.fileKey="upload";
-    options.fileName=imageName;
-    options.mimeType="image/jpeg";
 	
-    var params = {};
-    params.value1 = "test";
-    params.value2 = "param";
+  var options = new FileUploadOptions();
+  options.fileKey="upload";
+  
+  options.fileName=imageName;
+  options.mimeType="image/jpeg";
+		
+  var params = {};
+  params.value1 = "test";
+  params.value2 = "param";
+
+  options.params = params;
+  
+  options.chunkedMode = false;
+
+  var ft = new FileTransfer();
 	
-    options.params = params;
-	options.chunkedMode = false;
 	
-    var ft = new FileTransfer();
-	
-     ft.upload(imageURI, encodeURI(apipath_image),winProfile,failProfile,options);
+
+//ft.upload(imageURI, encodeURI("http://127.0.0.1:8000/unilever/syncmobile/fileUploader/"),win,fail,options);
+ //ft.upload(imageURI, encodeURI("http://e4.businesssolutionapps.com/mrepimage/syncmobile/fileUploader/"),win,fail,options);
+ ft.upload(imageURI, encodeURI("http://w02.yeapps.com/checkin/syncmobile_checkIn/imageupload/"),win,fail,options);
 	 
 }
 
