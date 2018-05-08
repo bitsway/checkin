@@ -546,7 +546,8 @@ navigator.camera.getPicture( cameraSuccess, cameraError, {
 function cameraSuccess(uri){  
 	//localStorage.picFlag=0
 	var picNo=parseInt(localStorage.picFlag)+1 
-	if (localStorage.picFlag==1){
+	
+	if (picNo==1){
 		var imageDiv="myImage1" 
 		var imageText="prPhoto1"
 		var image = document.getElementById(imageDiv);
@@ -558,7 +559,7 @@ function cameraSuccess(uri){
 	
 		}
 	
-	if (localStorage.picFlag==2){
+	if (picNo==2){
 		var imageDiv2="myImage2"
 		var imageText2="prPhoto2"
 		var image2 = document.getElementById(imageDiv2);
@@ -570,7 +571,7 @@ function cameraSuccess(uri){
 	
 	
 		}
-	if (localStorage.picFlag==3){
+	if (picNo==3){
 		var imageDiv3="myImage3"
 		var imageText3="prPhoto3"
 		var image3 = document.getElementById(imageDiv3);
