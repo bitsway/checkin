@@ -39,7 +39,11 @@ $.afui.useOSThemes=false;
 		
 			localStorage.picFlag=0
 		
-
+			
+			if (localStorage.synced=='YES'){
+				$('#cm_supCode').val(localStorage.user_id)
+				$.afui.loadContent("#pageHomeView",true,true,'right');
+			}
 		
     });
 
@@ -180,7 +184,7 @@ function check_user() {
 											screensettings_id_ob.append(screensettingsdataShow);
 											//alert (screensettingsdataShow)
 									
-											
+									$('#cm_supCode').val(localStorage.user_id)	
 									$.afui.loadContent("#pageHomeView",true,true,'right');
 							    }
 								 
@@ -257,9 +261,9 @@ function submit_data(){
 
 			success: function(result) {
 						if (result!==''){
-							upload_image(imageFileID1, imageFileName);
-							upload_image(imageFileID2, imageFileName1);
-							upload_image(imageFileID3, imageFileName2);
+							//upload_image(imageFileID1, imageFileName);
+							//upload_image(imageFileID2, imageFileName1);
+							//upload_image(imageFileID3, imageFileName2);
 							$("#success_msg").text("Submitted Successfully");
 							$.afui.loadContent("#msg_page",true,true,'right');
 							location.reload();
