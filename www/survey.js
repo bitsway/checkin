@@ -31,21 +31,13 @@ $.afui.useOSThemes=false;
 	   		$("#load_image").hide();
 			$('#screensettings_id').val('');
 	
-//			
-//			$("#error_login").html("");
-//			
-//			dVersion='localStorage.d_version';
-//
-//			upVersion=localStorage.up_version;
-//			
-//			
-//			version_check(dVersion, upVersion);
-//   		
+
+ 		
 			var screensettings_id_ob=$('#screensettings_id');				
 			screensettings_id_ob.empty()
 			screensettings_id_ob.append(localStorage.screensettingsdataShow);
 		
-		
+			localStorage.picFlag=0
 		
 
 		
@@ -177,7 +169,7 @@ function check_user() {
 												
 												var input_id='input_'+i.toString()
 
-												screensettingsdataShow=screensettingsdataShow+'<table style="width:100%"><tr><td style="width:10%;font-weight:bold;font-size:15px;">'+DataCap+'</td><td style="width:80%"><input type="'+DataType+'" maxlength="'+MaxChar+'" id="'+input_id+'"></td><td style="width:2%;font-weight:bold;font-size:15px;">    </td></tr></table>'
+												screensettingsdataShow=screensettingsdataShow+'<table style="width:100%"><tr> <td  style="font-weight:bold;font-size:15px;" >'+DataCap+'</td></tr><tr><td ><input type="'+DataType+'" maxlength="'+MaxChar+'" id="'+input_id+'"></td><td style="width:2%;font-weight:bold;font-size:15px;">    </td></tr></table>'
 												
 											}
 											localStorage.screensettingsdataShow=screensettingsdataShow
@@ -243,8 +235,8 @@ function submit_data(){
 	}else{
 		$("#load_image").show();
 		$("#btn").hide();
-		var imageFileID =$("#prPhoto1").val();
-		var imageFileID2 =$("#prPhoto2").val();
+		var imageFileID1 =$("#prPhoto1").val();
+		var imageFileID1 =$("#prPhoto2").val();
 		var imageFileID3 =$("#prPhoto3").val();
 
 		var tempTime = $.now();
@@ -264,7 +256,9 @@ function submit_data(){
 
 			success: function(result) {
 						if (result!==''){
-							//upload_image(imageFileID, imageFileName);
+							//upload_image(imageFileID1, imageFileName);
+							//upload_image(imageFileID2, imageFileName1);
+							//upload_image(imageFileID3, imageFileName2);
 							$("#success_msg").text("Submitted Successfully");
 							$.afui.loadContent("#msg_page",true,true,'right');
 							location.reload();
@@ -551,39 +545,41 @@ navigator.camera.getPicture( cameraSuccess, cameraError, {
 
 function cameraSuccess(uri){  
 	//localStorage.picFlag=0
-	//var picNo=parseInt(localStorage.picFlag)+1 
-	var imageDiv="myImage1" 
-	var imageDiv2="myImage2" 
-	var imageDiv3="myImage3"
-	var imageText="prPhoto1"
-	var imageText2="prPhoto2"
-	var imageText3="prPhoto3"
-	//var myImagePrescription_show="myImagePrescription_show"
-	//localStorage.picFlag=picNo
-	var image = document.getElementById(imageDiv);
-	var image2 = document.getElementById(imageDiv2);
-	var image3 = document.getElementById(imageDiv3);
-	//var image1 = document.getElementById(myImagePrescription_show);
-	image.src = uri;
-	image2.src = uri;
-	image3.src = uri;
-	//image1.src = uri;
-	imagePath = uri;
-	imagePath2 = uri;
-	imagePath3 = uri;
-	
-	//localStorage.prPhoto1=uri
-	
-	//alert (uri)
-	//takePicture();
+	var picNo=parseInt(localStorage.picFlag)+1 
+	if (localStorage.picFlag==1){
+		var imageDiv="myImage1" 
+		var imageText="prPhoto1"
+		var image = document.getElementById(imageDiv);
+		image.src = uri;
+		imagePath = uri;
+		$("#"+imageText).val(imagePath);
 	
 	
-   
-    
-	$("#"+imageText).val(imagePath);
-	$("#"+imageText2).val(imagePath2);
-	$("#"+imageText3).val(imagePath3);
 	
+		}
+	
+	if (localStorage.picFlag==2){
+		var imageDiv2="myImage2"
+		var imageText2="prPhoto2"
+		var image2 = document.getElementById(imageDiv2);
+		image2.src = uri;
+		imagePath2 = uri;
+		$("#"+imageText2).val(imagePath2);
+	
+	
+	
+	
+		}
+	if (localStorage.picFlag==3){
+		var imageDiv3="myImage3"
+		var imageText3="prPhoto3"
+		var image3 = document.getElementById(imageDiv3);
+		image3.src = uri;
+		imagePath3 = uri;
+		$("#"+imageText3).val(imagePath3);
+		}
+	
+	 
 	
         
 }
