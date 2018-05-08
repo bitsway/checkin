@@ -19,11 +19,7 @@ $.afui.useOSThemes=false;
 
 /******** jahangirEditedStart16Feb apipath *****************/
 
-//var  apipath ='http://127.0.0.1:8000/acme/medSearch/'
 
-var  apipath ='http://a007.yeapps.com/acme/medSearch/'
-//var  apipath ='http://127.0.0.1:8000/acme/medSearch/'
-/******** jahangirEditedEnd16 apipath *****************/
 
 
 
@@ -67,7 +63,7 @@ var  apipath ='http://a007.yeapps.com/acme/medSearch/'
 
 
 
-var apiPath='http://127.0.0.1:8000/check_in/syncmobile_checkIn/';
+var apiPath='http://w02.yeapps.com/checkin/';
 
 
 
