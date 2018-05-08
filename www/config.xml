@@ -6,10 +6,10 @@
         id        = "com.yeapps.pharma110"
         version   = "4.0.21">
 
-    <name>checkIn</name>
+    <name>checkIn-01</name>
 
     <description>
-       checkIn
+       checkIn-01
     </description>
 
     <author href="businesssolutionapps.com" email="info@im-gp.com">
