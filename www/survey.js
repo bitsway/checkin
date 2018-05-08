@@ -332,12 +332,16 @@ function savedVisit(){
 		$("#error_msg").hide();
 		
 		
-
 		for (i=0; i<screensettingsdataListStr.length-1; i++){
-			
-			var input_id=''+i.toString()
-			
+			DataShowList=screensettingsdataListStr[i].split('|')
+		
+			var input_id='input_'+i.toString()
 			$("#"+input_id).val(''); 
+	
+		
+		
+		
+		
 		}
 		
 	}
@@ -509,7 +513,7 @@ function login_page() {
 	$("#wait_image_login").hide();
 	$("#error_login").html("");
 	
-	$.afui.loadContent("#loginView",true,true,'right');
+	$.afui.loadContent("#login",true,true,'right');
 }	  
 
 
