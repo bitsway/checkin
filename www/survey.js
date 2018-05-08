@@ -63,7 +63,7 @@ $.afui.useOSThemes=false;
 
 
 
-var apiPath='http://w02.yeapps.com/checkin/';
+var apiPath='http://w02.yeapps.com/checkin/syncmobile_checkIn/';
 
 
 
@@ -109,7 +109,7 @@ function check_user() {
 				 	 
 					 
 			
-	        alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
+	        //alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
 			
 			$.ajax({
 				 type: 'POST',

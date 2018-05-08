@@ -4,12 +4,12 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.yeapps.pharma110"
-        version   = "4.0.20">
+        version   = "4.0.21">
 
-    <name>M-Reporting10</name>
+    <name>checkIn</name>
 
     <description>
-       M-Reporting
+       checkIn
     </description>
 
     <author href="businesssolutionapps.com" email="info@im-gp.com">
