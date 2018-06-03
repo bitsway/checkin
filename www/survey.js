@@ -106,7 +106,7 @@ function check_user() {
 				 	 
 					 
 			
-	        alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
+	       // alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
 			
 			$.ajax({
 				 type: 'POST',
@@ -282,9 +282,9 @@ function submit_data(){
 
 			success: function(result) {
 						if (result!==''){
-							upload_image(imageFileID1, imageFileName);
-							upload_image(imageFileID2, imageFileName1);
-							upload_image(imageFileID3, imageFileName2);
+							//upload_image(imageFileID1, imageFileName);
+//							upload_image(imageFileID2, imageFileName1);
+//							upload_image(imageFileID3, imageFileName2);
 							$("#success_msg").text("Submitted Successfully");
 							$.afui.loadContent("#msg_page",true,true,'right');
 							location.reload();
