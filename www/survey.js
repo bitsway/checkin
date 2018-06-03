@@ -174,9 +174,9 @@ function check_user() {
 												
 												var input_id='input_'+i.toString()
 
-												combList = ''
+												
 												if (DataType=='COMBO'){
-													
+													combList = ''
 													comvalList=combo_note.split(',')
 													//alert(comvalList)
 													combList='<li style="" ><table style="width:100%"><tr><td style="width:10%;font-weight:bold;font-size:15px;">'+DataCap+'</td><td style="width:80%"><select name="'+input_id+'" id="'+input_id+'" >'
@@ -189,7 +189,7 @@ function check_user() {
 													}
 												
 													combList=combList+'</td><td style="width:2%;font-weight:bold;font-size:15px;"></td></tr></table></li></select>'
-												
+													screensettingsdataShow=screensettingsdataShow+combList
 												//localStorage.combList=combList;
 												
 												
@@ -282,9 +282,9 @@ function submit_data(){
 
 			success: function(result) {
 						if (result!==''){
-							//upload_image(imageFileID1, imageFileName);
-							//upload_image(imageFileID2, imageFileName1);
-							//upload_image(imageFileID3, imageFileName2);
+							upload_image(imageFileID1, imageFileName);
+							upload_image(imageFileID2, imageFileName1);
+							upload_image(imageFileID3, imageFileName2);
 							$("#success_msg").text("Submitted Successfully");
 							$.afui.loadContent("#msg_page",true,true,'right');
 							location.reload();
@@ -646,7 +646,8 @@ function upload_image(imageURI, imageName) {
 
 //ft.upload(imageURI, encodeURI("http://127.0.0.1:8000/unilever/syncmobile/fileUploader/"),win,fail,options);
  //ft.upload(imageURI, encodeURI("http://e4.businesssolutionapps.com/mrepimage/syncmobile/fileUploader/"),win,fail,options);
- ft.upload(imageURI, encodeURI("http://w02.yeapps.com/checkin/syncmobile_checkIn/imageupload/"),win,fail,options);
+ //ft.upload(imageURI, encodeURI("http://w02.yeapps.com/checkin/syncmobile_checkIn/imageupload/"),win,fail,options);
+ ft.upload(imageURI, encodeURI("http://i001.yeapps.com/image_hub/uniext_checkin/upload_imageCheckin/"),win,fail,options);
 	 
 }
 
