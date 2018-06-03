@@ -170,12 +170,33 @@ function check_user() {
 												var DataType=DataShowList[2]   //# dataType
 												var MaxChar=DataShowList[3]   //# maxChar
 												
-												
+												var combo_note=DataShowList[6]
 												
 												var input_id='input_'+i.toString()
 
-												screensettingsdataShow=screensettingsdataShow+'<table style="width:100%"><tr> <td  style="font-weight:bold;font-size:15px;" >'+DataCap+'</td></tr><tr><td ><input type="'+DataType+'" maxlength="'+MaxChar+'" id="'+input_id+'"></td><td style="width:2%;font-weight:bold;font-size:15px;">    </td></tr></table>'
+												combList = ''
+												if (DataType=='COMBO'){
+													
+													comvalList=combo_note.split(',')
+													//alert(comvalList)
+													combList='<li style="" ><table style="width:100%"><tr><td style="width:10%;font-weight:bold;font-size:15px;">'+DataCap+'</td><td style="width:80%"><select name="'+input_id+'" id="'+input_id+'" >'
+													
+													combList=combList+'<option value="Selec type" selected="selected">Select type</option>'
+													
+													for (var j=0; j < comvalList.length; j++){	
+														combList=combList +'<option value="'+comvalList[j]+'">'+comvalList[j]+'</option>'	
+			  	
+													}
 												
+													combList=combList+'</td><td style="width:2%;font-weight:bold;font-size:15px;"></td></tr></table></li></select>'
+												
+												//localStorage.combList=combList;
+												
+												
+												}else{
+												
+												screensettingsdataShow=screensettingsdataShow+'<li style="" ><table style="width:100%"><tr><td style="width:10%;font-weight:bold;font-size:15px;">'+DataCap+'</td><td style="width:80%"><input type="'+DataType+'" maxlength="'+MaxChar+'" id="'+input_id+'"></td><td style="width:2%;font-weight:bold;font-size:15px;">    </td></tr></table></li>'
+												}
 											}
 											localStorage.screensettingsdataShow=screensettingsdataShow
 											
