@@ -179,7 +179,7 @@ function check_user() {
 													combList = ''
 													comvalList=combo_note.split(',')
 													//alert(comvalList)
-													combList='<li style="" ><table style="width:100%"><tr><td style="width:10%;font-weight:bold;font-size:15px;">'+DataCap+'</td><td style="width:80%"><select name="'+input_id+'" id="'+input_id+'" >'
+													combList='<li style="" ><table style="width:100%"><tr><td style="width:10%;font-weight:bold;font-size:15px;">'+DataCap+'</td></tr><tr><td style="width:80%"><select name="'+input_id+'" id="'+input_id+'" >'
 													
 													combList=combList+'<option value="Selec type" selected="selected">Select type</option>'
 													
@@ -195,7 +195,7 @@ function check_user() {
 												
 												}else{
 												
-												screensettingsdataShow=screensettingsdataShow+'<li style="" ><table style="width:100%"><tr><td style="width:10%;font-weight:bold;font-size:15px;">'+DataCap+'</td><td style="width:80%"><input type="'+DataType+'" maxlength="'+MaxChar+'" id="'+input_id+'"></td><td style="width:2%;font-weight:bold;font-size:15px;">    </td></tr></table></li>'
+												screensettingsdataShow=screensettingsdataShow+'<li style="" ><table style="width:100%"><tr><td style="width:10%;font-weight:bold;font-size:15px;">'+DataCap+'</td></tr><tr><td style="width:80%"><input type="'+DataType+'" maxlength="'+MaxChar+'" id="'+input_id+'"></td><td style="width:2%;font-weight:bold;font-size:15px;">    </td></tr></table></li>'
 												}
 											}
 											localStorage.screensettingsdataShow=screensettingsdataShow
