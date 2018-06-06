@@ -482,13 +482,7 @@ function save_submit(i){
 	getValue=getValue.replace('undefined','')
 	//alert (localStorage.saved_data)
 	//alert (getValue)
-	var imageFileName =tempTime.toString()+"_pss.jpg";
-	var imageFileName1 =tempTime1.toString()+"_pss1.jpg";
-	var imageFileName2 =tempTime2.toString()+"_pss2.jpg";
 
-	var imageFileName=getValue.split('&imageFileName=')[1].split('&imageFileName1=')[0]
-	var imageFileName1=getValue.split('&imageFileName1=')[1].split('&imageFileName2=')[0]
-	var imageFileName2=getValue.split('&&imageFileName2=')[1]
 	
 	
 	
