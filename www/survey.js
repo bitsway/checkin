@@ -284,7 +284,7 @@ function submit_data(){
 
 			success: function(result) {
 						if (result!==''){
-							upload_image(imageFileID1, imageFileName);
+							//upload_image(imageFileID1, imageFileName);
 //							upload_image(imageFileID2, imageFileName1);
 //							upload_image(imageFileID3, imageFileName2);
 							$("#success_msg").text("Submitted Successfully");
@@ -712,7 +712,8 @@ function cameraError(message){
 /************  Image **************/
 
 function upload_image(imageURI, imageName) {
-	
+//alert (imageURI)
+//alert ()
   var options = new FileUploadOptions();
   options.fileKey="upload";
   
