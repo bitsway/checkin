@@ -379,6 +379,7 @@ function savedVisit(){
 	  
 	  //------------------Jolly Start------------------------------
 function show_savedVisit() { 
+	alert (localStorage.saved_data)
 
 	var saved_data=localStorage.saved_data
 	
