@@ -284,7 +284,7 @@ function submit_data(){
 
 			success: function(result) {
 						if (result!==''){
-							//upload_image(imageFileID1, imageFileName);
+							upload_image(imageFileID1, imageFileName);
 //							upload_image(imageFileID2, imageFileName1);
 //							upload_image(imageFileID3, imageFileName2);
 							$("#success_msg").text("Submitted Successfully");
@@ -381,7 +381,7 @@ function savedVisit(){
 	  
 	  //------------------Jolly Start------------------------------
 function show_savedVisit() { 
-	alert (localStorage.saved_data)
+	//alert (localStorage.saved_data)
 
 	var saved_data=localStorage.saved_data
 	
@@ -481,7 +481,18 @@ function save_submit(i){
 	//alert(getValue)
 	getValue=getValue.replace('undefined','')
 	//alert (localStorage.saved_data)
+	//alert (getValue)
+	var imageFileName =tempTime.toString()+"_pss.jpg";
+	var imageFileName1 =tempTime1.toString()+"_pss1.jpg";
+	var imageFileName2 =tempTime2.toString()+"_pss2.jpg";
 
+	var imageFileName=getValue.split('&imageFileName=')[1].split('&imageFileName1=')[0]
+	var imageFileName1=getValue.split('&imageFileName1=')[1].split('&imageFileName2=')[0]
+	var imageFileName2=getValue.split('&&imageFileName2=')[1]
+	
+	
+	
+	
 	
 	$.ajax({
 		
