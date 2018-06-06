@@ -95,6 +95,8 @@ function check_user() {
 			localStorage.up_version=''
 			localStorage.saved_dataShow=''
 			
+			localStorage.saved_data=''
+			
 
 			
 			
