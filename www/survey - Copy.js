@@ -377,9 +377,7 @@ function savedVisit(){
 
 //======================= show_submit_save Start  ==============================
 	  
-	  //------------------Jolly Start------------------------------
 function show_savedVisit() { 
-
 	var saved_data=localStorage.saved_data
 	
 	saved_dataList=saved_data.split('<savedsaved>')
@@ -390,96 +388,46 @@ function show_savedVisit() {
 	for (i=0; i<saved_dataList.length-1; i++){
 		var saved_dataShowGet=saved_dataList[i]
 		
-		if (saved_dataShowGet.length > 10){
-			var show_info_get=saved_dataShowGet.split('&data_list=')[1].split('&imageFileName=')[0]
-			
-			var show_info_set=show_info_get.split('<rdrd>');
-			
-			var showinfo=''
-			for(j=0; j<show_info_set.length-1; j++){
-					 var show_info_setGet=show_info_set[j]
-					 
-					 show_gets=show_info_setGet.split("<fdfd>")[1]
-					 
-					 if (showinfo==''){showinfo=showinfo+	show_gets}
-					 else{showinfo=showinfo+" | "+	show_gets}
-				
-			}
-			
+		
+		var show_info_get=saved_dataShowGet.split('&data_list=')[1].split('&imageFileName=')[0]
 	
-			var input_id=''+i.toString()
-			saved_dataShow=saved_dataShow+'<input  name="'+input_id+'" id="'+input_id+'" type="hidden" value="'+saved_dataShowGet+'">'
+		var show_info_set=show_info_get.split('<rdrd>');
+		
+		var showinfo=''
+		for(j=0; j<show_info_set.length-1; j++){
+				 var show_info_setGet=show_info_set[j]
+				 
+				 show_gets=show_info_setGet.split("<fdfd>")[1]
+				 
+				 if (showinfo==''){showinfo=showinfo+	show_gets}
+				 else{showinfo=showinfo+" | "+	show_gets}
 			
-			
-			saved_dataShow=saved_dataShow+'<table width="80%" style="border:1px solid #d3d3d3;border-radius:3px" align="center"><tr><td width="40%" style="padding-left:5px" align="left">'+showinfo+'</td><td width="40%" align="right" style="padding:2px"><input type="submit" id="sub_emp" style="color:darkblue;padding:5px;border:1px solid #aaa;background:#eee;font-weight:bold;box-shadow:1px 1px 5px #333;border-radius:3px" onclick="save_submit('+i+')" value="Submit"></td></tr></table><br/>'
 		}
+		
+
+		var input_id=''+i.toString()
+		saved_dataShow=saved_dataShow+'<input  name="'+input_id+'" id="'+input_id+'" type="hidden" value="'+saved_dataShowGet+'">'
+		
+		
+		saved_dataShow=saved_dataShow+'<table width="80%" style="border:1px solid #d3d3d3;border-radius:3px" align="center"><tr><td width="40%" style="padding-left:5px" align="left">'+showinfo+'</td><td width="40%" align="right" style="padding:2px"><input type="submit" style="color:darkblue;padding:5px;border:1px solid #aaa;background:#eee;font-weight:bold;box-shadow:1px 1px 5px #333;border-radius:3px" onclick="save_submit('+i+')" value="Submit"></td></tr></table><br/>'
+		
 	}
-	
+
     
 	localStorage.saved_dataShow=saved_dataShow
-  	$("#savedVisitRecord").empty();
+   
 	$('#savedVisitRecord').html(localStorage.saved_dataShow);
 	
 	$.afui.loadContent("#savedVisit_page",true,true,'right');				
-	
-			
-}	 
-function show_savedVisitReplace() { 
 
-	var saved_data=localStorage.saved_data
-	
-	saved_dataList=saved_data.split('<savedsaved>')
-	
-	var saved_dataShow=''
-	var saved_dataShowGet=''
-	
-	for (i=0; i<saved_dataList.length-1; i++){
-		
-		
-		var saved_dataShowGet=saved_dataList[i]
-		
-		if (saved_dataShowGet.length > 10){
-			var show_info_get=saved_dataShowGet.split('&data_list=')[1].split('&imageFileName=')[0]
-		
-			var show_info_set=show_info_get.split('<rdrd>');
-			
-			var showinfo=''
-			for(j=0; j<show_info_set.length-1; j++){
-					 var show_info_setGet=show_info_set[j]
-					 
-					 show_gets=show_info_setGet.split("<fdfd>")[1]
-					 
-					 if (showinfo==''){showinfo=showinfo+	show_gets}
-					 else{showinfo=showinfo+" | "+	show_gets}
-				
-			}
-			
-	
-			var input_id=''+i.toString()
-			saved_dataShow=saved_dataShow+'<input  name="'+input_id+'" id="'+input_id+'" type="hidden" value="'+saved_dataShowGet+'">'
-			
-			
-			saved_dataShow=saved_dataShow+'<table width="80%" style="border:1px solid #d3d3d3;border-radius:3px" align="center"><tr><td width="40%" style="padding-left:5px" align="left">'+showinfo+'</td><td width="40%" align="right" style="padding:2px"><input type="submit" id="sub_emp" style="color:darkblue;padding:5px;border:1px solid #aaa;background:#eee;font-weight:bold;box-shadow:1px 1px 5px #333;border-radius:3px" onclick="save_submit('+i+')" value="Submit"></td></tr></table><br/>'
-		}
-	}
-	
-    
-	localStorage.saved_dataShow=saved_dataShow
-  	//$("#savedVisitRecord").empty();
-	$('#savedVisitRecord').html(localStorage.saved_dataShow);
-				
-	
 			
 }	 
 
 function save_submit(i){
+	
 	var inpuName=''+i.toString()
 	var getValue=$("#"+inpuName).val();
-	//alert(getValue)
 	getValue=getValue.replace('undefined','')
-	//alert (localStorage.saved_data)
-
-	
 	$.ajax({
 		
 		type:'POST',
@@ -487,42 +435,21 @@ function save_submit(i){
 		url:getValue,
 		
 		success: function(result1) {
-				//alert (result1)
-				if (result1=='Success'){
-					
-				var saved_data=localStorage.saved_data
-				saved_dataList=saved_data.split('<savedsaved>')
-				RemoveDataStr=saved_dataList[i]
-				saved_dataReplace=saved_data.replace(RemoveDataStr,'')
-				localStorage.saved_data=saved_dataReplace
-				
-				
-				show_savedVisitReplace()
-					
-				//upload_image(imageFileID, imageFileName);
-				
-				$.afui.loadContent("#msg_page",true,true,'right');
-					
-					
-					
-					
-   
-				}
-				
-					
-						
-					
 			
-		}   
-		   
+				if (result1!=''){
+
+					//upload_image(imageFileID, imageFileName);
+					
+					$.afui.loadContent("#msg_page",true,true,'right');
+					
+				}
+			
+		}      
  	});
 	
 	
 	
 }
-
- //------------------Jolly End------------------------------
-
 
 
 
