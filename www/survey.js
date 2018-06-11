@@ -513,7 +513,10 @@ function save_submit(i){
 				var imageFileID1=getValue.split('&imageFileID1=')[1].split('&imageFileID2=')[0]
 				var imageFileID2=getValue.split('&imageFileID2=')[1].split('&imageFileID3=')[0]
 				var imageFileID3=getValue.split('&imageFileID3=')[1]
-					
+				
+				alert 	(imageFileID1 +'======='+ imageFileName)
+				alert 	(imageFileID2 +'======='+ imageFileName1)
+				alert 	(imageFileID3 +'======='+ imageFileName2)
 					
 				upload_image(imageFileID1, imageFileName);
 				upload_image(imageFileID2, imageFileName1);
