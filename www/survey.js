@@ -266,7 +266,7 @@ function submit_data(){
 		var imageFileID1 =$("#prPhoto1").val();
 		var imageFileID1 =$("#prPhoto2").val();
 		var imageFileID3 =$("#prPhoto3").val();
-
+		alert (imageFileID1)
 		var tempTime = $.now();
 		var tempTime1 = $.now();
 		var tempTime2 = $.now();
@@ -659,7 +659,7 @@ navigator.camera.getPicture( cameraSuccess, cameraError, {
 
 function cameraSuccess(uri){  
 	//localStorage.picFlag=0
-	alert (localStorage.picFlag)
+	//alert (localStorage.picFlag)
 	var picNo=parseInt(localStorage.picFlag)+1 
 	localStorage.picFlag=picNo
 	if (picNo==1){
