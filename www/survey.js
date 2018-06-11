@@ -108,7 +108,7 @@ function check_user() {
 				 	 
 					 
 			
-	        alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
+	        //alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
 			
 			$.ajax({
 				 type: 'POST',
@@ -193,7 +193,7 @@ function check_user() {
 													combList=combList+'</td><td style="width:2%;font-weight:bold;font-size:15px;"></td></tr></table></li></select>'
 													screensettingsdataShow=screensettingsdataShow+combList
 												//localStorage.combList=combList;
-												alert ('4')	
+												
 												
 												}else{
 												
@@ -284,6 +284,8 @@ function submit_data(){
 
 			success: function(result) {
 						if (result!==''){
+							alert (imageFileID1)
+							alert (imageFileName)
 							upload_image(imageFileID1, imageFileName);
 //							upload_image(imageFileID2, imageFileName1);
 //							upload_image(imageFileID3, imageFileName2);
