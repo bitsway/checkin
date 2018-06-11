@@ -255,9 +255,10 @@ function submit_data(){
 		if (get_data==''){errorFlag=1}
 		
 	} 
+	if (imageFileID1=='' || imageFileID2=='' || imageFileID3==''){errorFlag=1}
 	//alert (errorFlag)
 	if(errorFlag==1){
-		$("#error_msg").text("Field Value is required");
+		$("#error_msg").text("Field Value and image is required");
 		$("#error_msg").show();
 		
 	}else{
@@ -287,8 +288,8 @@ function submit_data(){
 							
 							
 							upload_image(imageFileID1, imageFileName);
-//							upload_image(imageFileID2, imageFileName1);
-//							upload_image(imageFileID3, imageFileName2);
+							upload_image(imageFileID2, imageFileName1);
+							upload_image(imageFileID3, imageFileName2);
 							$("#success_msg").text("Submitted Successfully");
 							$.afui.loadContent("#msg_page",true,true,'right');
 							location.reload();
@@ -338,12 +339,16 @@ function savedVisit(){
 		
 		
 	}
+	var imageFileID1 =$("#prPhoto1").val();
+	var imageFileID2 =$("#prPhoto2").val();
+	var imageFileID3 =$("#prPhoto3").val();
+	if (imageFileID1=='' || imageFileID2=='' || imageFileID3==''){errorFlag_save=1}
 	if (errorFlag_save==1){
-		$("#error_msg").text("Field Value is required");
+		$("#error_msg").text("Field Value and image is required");
 		
 	}
 	else{
-		var imageFileID =$("#prPhoto1").val();
+		var imageFileID1 =$("#prPhoto1").val();
 		var imageFileID2 =$("#prPhoto2").val();
 		var imageFileID3 =$("#prPhoto3").val();
 
@@ -354,7 +359,7 @@ function savedVisit(){
 		var imageFileName1 =tempTime1.toString()+"_pss1.jpg";
 		var imageFileName2 =tempTime2.toString()+"_pss2.jpg";
 
-		var saveData=apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2
+		var saveData=apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&imageFileID1='+imageFileID1+'&imageFileID2='+imageFileID2+'&imageFileID3='+imageFileID3
 		
 		localStorage.saved_data=localStorage.saved_data+saveData+'<savedsaved>'
 		
@@ -499,6 +504,23 @@ function save_submit(i){
 		success: function(result1) {
 				//alert (result1)
 				if (result1=='Success'){
+					
+					
+				var imageFileName=getValue.split('&imageFileName=')[1].split('&imageFileName1=')[0]
+				var imageFileName1=getValue.split('&imageFileName1=')[1].split('&imageFileName2=')[0]
+				var imageFileName2=getValue.split('&imageFileName2=')[1].split('&imageFileID1=')[0]
+				
+				var imageFileID1=getValue.split('&imageFileID1=')[1].split('&imageFileID2=')[0]
+				var imageFileID2=getValue.split('&imageFileID2=')[1].split('&imageFileID3=')[0]
+				var imageFileID3=getValue.split('&imageFileID3=')[1]
+					
+					
+				upload_image(imageFileID1, imageFileName);
+				upload_image(imageFileID2, imageFileName1);
+				upload_image(imageFileID3, imageFileName2);	
+					
+					
+					
 					
 				var saved_data=localStorage.saved_data
 				saved_dataList=saved_data.split('<savedsaved>')
@@ -722,24 +744,18 @@ function upload_image(imageURI, imageName) {
 	options.chunkedMode = false;
 	
     var ft = new FileTransfer();
-	alert ('1')
+	
     ft.upload(imageURI, encodeURI("http://i001.yeapps.com/image_hub/uniext_checkin/upload_imageCheckin/"),winProfile,failProfile,options);
-  	alert ('2')
-  
-  
-  
-  
-  
+  	
  
-	 
 }
 
 function winProfile(r) {
-	alert ('Success')
+	var result='Success'
 }
 
 function failProfile(error) {
-	alert ('Failed')
+	var result='Failed'
 	//$("#error_prescription_submit").text('Memory Error. Please take new picture and Submit');
 }		
 
