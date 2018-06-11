@@ -286,6 +286,7 @@ function submit_data(){
 						if (result!==''){
 							alert (imageFileID1)
 							alert (imageFileName)
+							
 							upload_image(imageFileID1, imageFileName);
 //							upload_image(imageFileID2, imageFileName1);
 //							upload_image(imageFileID3, imageFileName2);
@@ -658,6 +659,7 @@ navigator.camera.getPicture( cameraSuccess, cameraError, {
 
 function cameraSuccess(uri){  
 	//localStorage.picFlag=0
+	alert (localStorage.picFlag)
 	var picNo=parseInt(localStorage.picFlag)+1 
 	localStorage.picFlag=picNo
 	if (picNo==1){
