@@ -709,30 +709,28 @@ function cameraError(message){
 /************  Image **************/
 
 function upload_image(imageURI, imageName) {
-  alert (imageURI)
-  alert (imageName)
   var options = new FileUploadOptions();
-  options.fileKey="upload";
-  
-  options.fileName=imageName;
-  options.mimeType="image/jpeg";
-		
-  var params = {};
-  params.value1 = "test";
-  params.value2 = "param";
-
-  options.params = params;
-  
-  options.chunkedMode = false;
-
-  var ft = new FileTransfer();
+    options.fileKey="upload";
+    options.fileName=imageName;
+    options.mimeType="image/jpeg";
 	
+    var params = {};
+    params.value1 = "test";
+    params.value2 = "param";
 	
-
-//ft.upload(imageURI, encodeURI("http://127.0.0.1:8000/unilever/syncmobile/fileUploader/"),win,fail,options);
- //ft.upload(imageURI, encodeURI("http://e4.businesssolutionapps.com/mrepimage/syncmobile/fileUploader/"),win,fail,options);
- //ft.upload(imageURI, encodeURI("http://w02.yeapps.com/checkin/syncmobile_checkIn/imageupload/"),win,fail,options);
- ft.upload(imageURI, encodeURI("http://i001.yeapps.com/image_hub/uniext_checkin/upload_imageCheckin/"),win,fail,options);
+    options.params = params;
+	options.chunkedMode = false;
+	
+    var ft = new FileTransfer();
+	alert ('1')
+    ft.upload(imageURI, encodeURI("http://i001.yeapps.com/image_hub/uniext_checkin/upload_imageCheckin/"),winProfile,failProfile,options);
+  	alert ('2')
+  
+  
+  
+  
+  
+ 
 	 
 }
 
