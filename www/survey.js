@@ -266,7 +266,7 @@ function submit_data(){
 		var imageFileID1 =$("#prPhoto1").val();
 		var imageFileID2 =$("#prPhoto2").val();
 		var imageFileID3 =$("#prPhoto3").val();
-		alert (imageFileID1)
+		
 		var tempTime = $.now();
 		var tempTime1 = $.now();
 		var tempTime2 = $.now();
@@ -284,8 +284,7 @@ function submit_data(){
 
 			success: function(result) {
 						if (result!==''){
-							alert (imageFileID1)
-							alert (imageFileName)
+							
 							
 							upload_image(imageFileID1, imageFileName);
 //							upload_image(imageFileID2, imageFileName1);
@@ -710,8 +709,8 @@ function cameraError(message){
 /************  Image **************/
 
 function upload_image(imageURI, imageName) {
-//alert (imageURI)
-//alert ()
+  alert (imageURI)
+  alert (imageName)
   var options = new FileUploadOptions();
   options.fileKey="upload";
   
