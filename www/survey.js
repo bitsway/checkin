@@ -108,7 +108,7 @@ function check_user() {
 				 	 
 					 
 			
-	       // alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
+	        alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
 			
 			$.ajax({
 				 type: 'POST',
@@ -156,7 +156,7 @@ function check_user() {
 								localStorage.synced='YES';
 											
 								//alert (localStorage.synced)		
-											
+										
 								var screensettingsdata=localStorage.screensettingsdata
 
 								screensettingsdataListStr=screensettingsdata.split('<rdrd>');
@@ -175,7 +175,7 @@ function check_user() {
 												var combo_note=DataShowList[6]
 												
 												var input_id='input_'+i.toString()
-
+												
 												
 												if (DataType=='COMBO'){
 													combList = ''
@@ -193,7 +193,7 @@ function check_user() {
 													combList=combList+'</td><td style="width:2%;font-weight:bold;font-size:15px;"></td></tr></table></li></select>'
 													screensettingsdataShow=screensettingsdataShow+combList
 												//localStorage.combList=combList;
-												
+												alert ('4')	
 												
 												}else{
 												
