@@ -264,7 +264,7 @@ function submit_data(){
 		$("#load_image").show();
 		$("#btn").hide();
 		var imageFileID1 =$("#prPhoto1").val();
-		var imageFileID1 =$("#prPhoto2").val();
+		var imageFileID2 =$("#prPhoto2").val();
 		var imageFileID3 =$("#prPhoto3").val();
 		alert (imageFileID1)
 		var tempTime = $.now();
