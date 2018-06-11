@@ -284,7 +284,7 @@ function submit_data(){
 
 			success: function(result) {
 						if (result!==''){
-							//upload_image(imageFileID1, imageFileName);
+							upload_image(imageFileID1, imageFileName);
 //							upload_image(imageFileID2, imageFileName1);
 //							upload_image(imageFileID3, imageFileName2);
 							$("#success_msg").text("Submitted Successfully");
@@ -734,9 +734,11 @@ function upload_image(imageURI, imageName) {
 }
 
 function winProfile(r) {
+	alert ('Success')
 }
 
 function failProfile(error) {
+	alert ('Failed')
 	//$("#error_prescription_submit").text('Memory Error. Please take new picture and Submit');
 }		
 
