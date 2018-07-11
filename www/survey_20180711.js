@@ -59,8 +59,8 @@ $.afui.useOSThemes=false;
 
 
 
-var apiPath='http://127.0.0.1:8000/check_in/syncmobile_checkIn/';
-var apipath_image='http://w02.yeapps.com/check_in/syncmobile_checkIn/imageupload/'
+var apiPath='http://w02.yeapps.com/checkin/syncmobile_checkIn/';
+var apipath_image='http://w02.yeapps.com/checkin/syncmobile_checkIn/imageupload/'
 
 
 
@@ -108,7 +108,7 @@ function check_user() {
 				 	 
 					 
 			
-	       // alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
+	        //alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
 			
 			$.ajax({
 				 type: 'POST',
@@ -162,7 +162,7 @@ function check_user() {
 								screensettingsdataListStr=screensettingsdata.split('<rdrd>');
 
 								var screensettingsdataShow=''
-											//alert ('AA')
+											
 											for (i=0; i<screensettingsdataListStr.length-1; i++)
 											
 											{
@@ -287,9 +287,9 @@ function submit_data(){
 						if (result!==''){
 							
 							
-							//upload_image(imageFileID1, imageFileName);
-							//upload_image(imageFileID2, imageFileName1);
-							//upload_image(imageFileID3, imageFileName2);
+							upload_image(imageFileID1, imageFileName);
+							upload_image(imageFileID2, imageFileName1);
+							upload_image(imageFileID3, imageFileName2);
 							$("#success_msg").text("Submitted Successfully");
 							$.afui.loadContent("#msg_page",true,true,'right');
 							location.reload();
@@ -343,7 +343,6 @@ function savedVisit(){
 	var imageFileID2 =$("#prPhoto2").val();
 	var imageFileID3 =$("#prPhoto3").val();
 	if (imageFileID1=='' || imageFileID2=='' || imageFileID3==''){errorFlag_save=1}
-	errorFlag_save=0
 	if (errorFlag_save==1){
 		$("#error_msg").text("Field Value and image is required");
 		
@@ -421,10 +420,8 @@ function show_savedVisit() {
 			var input_id=''+i.toString()
 			saved_dataShow=saved_dataShow+'<input  name="'+input_id+'" id="'+input_id+'" type="hidden" value="'+saved_dataShowGet+'">'
 			
-			//------------------Shima 2018/07/10 Start------------------------------
-			saved_dataShow=saved_dataShow+'<table width="80%" style="border:1px solid #d3d3d3;border-radius:3px" align="center"><tr><td width="40%" style="padding-left:5px" align="left">'+showinfo+'</td><td width="40%" align="right" style="padding:2px"><input type="submit" id="sub_emp" style="color:darkblue;padding:5px;margin-right:10px;border:1px solid #aaa;background:#eee;font-weight:bold;box-shadow:1px 1px 5px #333;border-radius:3px" onclick="save_update('+i+')" value="Update"><input type="submit" id="sub_emp" style="color:darkblue;padding:5px;border:1px solid #aaa;background:#eee;font-weight:bold;box-shadow:1px 1px 5px #333;border-radius:3px" onclick="save_submit('+i+')" value="Submit"></td></tr></table><br/>'
-			//------------------Shima 2018/07/10 End------------------------------
 			
+			saved_dataShow=saved_dataShow+'<table width="80%" style="border:1px solid #d3d3d3;border-radius:3px" align="center"><tr><td width="40%" style="padding-left:5px" align="left">'+showinfo+'</td><td width="40%" align="right" style="padding:2px"><input type="submit" id="sub_emp" style="color:darkblue;padding:5px;border:1px solid #aaa;background:#eee;font-weight:bold;box-shadow:1px 1px 5px #333;border-radius:3px" onclick="save_submit('+i+')" value="Submit"></td></tr></table><br/>'
 		}
 	}
 	
@@ -484,36 +481,6 @@ function show_savedVisitReplace() {
 	
 			
 }	 
-
-//------------------Shima 2018/07/10 Start------------------------------
-
-function save_update(i){
-	
-	var inpuName=''+i.toString()
-	var getValueUpdate=$("#"+inpuName).val();
-	
-	getValUp=getValueUpdate.split('<rdrd>')
-	
-	getValUpdateSet=''
-	for(k=0; k<getValUp.length-1; k++){
-			 var getValUpdate=getValUp[k]
-			 getValUpdateSet=getValUpdate.split("<fdfd>")[1]
-			 	//alert(getValUpdateSet)
-			var input_id='input_'+k.toString()
-			$("#"+input_id).val(getValUpdateSet);
-		
-	}
-	$.afui.loadContent("#pageHomeView",true,true,'right');	
-	
-	var saved_data=localStorage.saved_data
-	saved_dataList=saved_data.split('<savedsaved>')
-	RemoveDataStr=saved_dataList[i]
-	saved_dataReplace=saved_data.replace(RemoveDataStr,'')
-	localStorage.saved_data=saved_dataReplace
-	
-}
-
-//------------------Shima 2018/07/10 End------------------------------
 
 function save_submit(i){
 	var inpuName=''+i.toString()
