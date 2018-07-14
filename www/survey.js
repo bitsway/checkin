@@ -288,9 +288,9 @@ function submit_data(){
 						if (result!==''){
 							
 							
-							//upload_image(imageFileID1, imageFileName);
-							//upload_image(imageFileID2, imageFileName1);
-							//upload_image(imageFileID3, imageFileName2);
+							upload_image(imageFileID1, imageFileName);
+							upload_image(imageFileID2, imageFileName1);
+							upload_image(imageFileID3, imageFileName2);
 							$("#success_msg").text("Submitted Successfully");
 							$.afui.loadContent("#msg_page",true,true,'right');
 							location.reload();
@@ -443,6 +443,12 @@ function show_savedVisit() {
 	
 	
 	
+	if (imageFileID3==''){
+		localStorage.picFlag=2
+	else if (imageFileID2==''){
+		localStorage.picFlag=1
+	else {
+		localStorage.picFlag=0
 	
 	
 	var imageDiv="myImage1" 
