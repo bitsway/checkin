@@ -430,7 +430,7 @@ function show_savedVisit() {
 		
 	}
 	
-    &imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&imageFileID1='+imageFileID1+'&imageFileID2='+imageFileID2+'&imageFileID3='+imageFileID3
+    
 	
 	var imageFileName=saved_dataShowGet.split('&imageFileName=')[1].split('&imageFileName1=')[0]  
 	var imageFileName1=saved_dataShowGet.split('&imageFileName1=')[1].split('&imageFileName2=')[0]   
