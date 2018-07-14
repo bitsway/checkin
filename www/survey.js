@@ -449,7 +449,7 @@ function show_savedVisit() {
 		localStorage.picFlag=1
 	else {
 		localStorage.picFlag=0
-	
+	}
 	
 	var imageDiv="myImage1" 
 	var imageText="prPhoto1"
