@@ -426,57 +426,9 @@ function show_savedVisit() {
 			//------------------Shima 2018/07/10 End------------------------------
 			
 		}
-		
-		
 	}
 	
-    &imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&imageFileID1='+imageFileID1+'&imageFileID2='+imageFileID2+'&imageFileID3='+imageFileID3
-	
-	var imageFileName=saved_dataShowGet.split('&imageFileName=')[1].split('&imageFileName1=')[0]  
-	var imageFileName1=saved_dataShowGet.split('&imageFileName1=')[1].split('&imageFileName2=')[0]   
-	var imageFileName2=saved_dataShowGet.split('&imageFileName2=')[1].split('&imageFileID1=')[0]    
-	var imageFileID1=saved_dataShowGet.split('&imageFileID1=')[1].split('&imageFileID2=')[0]     
-	var imageFileID2=saved_dataShowGet.split('&imageFileID2=')[1].split('&imageFileID3=')[0]    
-	var imageFileID3=saved_dataShowGet.split('&imageFileID3=')[1]
-	
-	
-	
-	
-	
-	
-	var imageDiv="myImage1" 
-	var imageText="prPhoto1"
-	var image = document.getElementById(imageDiv);
-	image.src = imageFileID1;
-	imagePath = imageFileID1;
-	$("#"+imageText).val(imagePath);
-	
-	
-	
-	var imageDiv2="myImage2"
-	var imageText2="prPhoto2"
-	var image2 = document.getElementById(imageDiv2);
-	image2.src = imageFileID2;
-	imagePath2 = imageFileID2;
-	$("#"+imageText2).val(imagePath2);
-		
-		
-	var imageDiv3="myImage3"
-	var imageText3="prPhoto3"
-	var image3 = document.getElementById(imageDiv3);
-	image3.src = imageFileID3;
-	imagePath3 = imageFileID3;
-	$("#"+imageText3).val(imagePath3);	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
+    
 	localStorage.saved_dataShow=saved_dataShow
   	$("#savedVisitRecord").empty();
 	$('#savedVisitRecord').html(localStorage.saved_dataShow);
