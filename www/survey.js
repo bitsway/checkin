@@ -59,6 +59,7 @@ $.afui.useOSThemes=false;
 
 
 
+//var apiPath='http://127.0.0.1:8000/check_in/syncmobile_checkIn/';
 var apiPath='http://127.0.0.1:8000/check_in/syncmobile_checkIn/';
 var apipath_image='http://w02.yeapps.com/check_in/syncmobile_checkIn/imageupload/'
 
