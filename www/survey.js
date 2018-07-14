@@ -445,8 +445,10 @@ function show_savedVisit() {
 	
 	if (imageFileID3==''){
 		localStorage.picFlag=2
+	}
 	else if (imageFileID2==''){
 		localStorage.picFlag=1
+	}
 	else {
 		localStorage.picFlag=0
 	}
