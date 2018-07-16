@@ -451,7 +451,7 @@ function savedVisit(){
 	  //------------------Jolly Start------------------------------
 function show_savedVisit() { 
 	//alert (localStorage.saved_data)
-
+	alert (localStorage.saved_data)
 	var saved_data=localStorage.saved_data
 	
 	saved_dataList=saved_data.split('<savedsaved>')
@@ -501,7 +501,9 @@ function show_savedVisit() {
 	var imageFileID2=saved_dataShowGet.split('&imageFileID2=')[1].split('&imageFileID3=')[0]    
 	var imageFileID3=saved_dataShowGet.split('&imageFileID3=')[1]
 	
-	
+	alert (imageFileName)
+	alert (imageFileName1)
+	alert (imageFileName2)
 	
 	
 	if (imageFileID3==''){
