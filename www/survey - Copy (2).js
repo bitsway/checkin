@@ -59,7 +59,6 @@ $.afui.useOSThemes=false;
 
 
 
-//var apiPath='http://127.0.0.1:8000/check_in/syncmobile_checkIn/';
 var apiPath='http://w02.yeapps.com/checkin/syncmobile_checkIn/';
 var apipath_image='http://w02.yeapps.com/checkin/syncmobile_checkIn/imageupload/'
 
@@ -109,7 +108,7 @@ function check_user() {
 				 	 
 					 
 			
-	        alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
+	        //alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
 			
 			$.ajax({
 				 type: 'POST',
@@ -163,7 +162,7 @@ function check_user() {
 								screensettingsdataListStr=screensettingsdata.split('<rdrd>');
 
 								var screensettingsdataShow=''
-											//alert ('AA')
+											
 											for (i=0; i<screensettingsdataListStr.length-1; i++)
 											
 											{
@@ -198,7 +197,7 @@ function check_user() {
 												
 												}else{
 												
-												screensettingsdataShow=screensettingsdataShow+'<li style="" ><table style="width:100%"><tr><td style="width:10%;font-weight:bold;font-size:15px;">'+DataCap+'</td></tr><tr><td style="width:80%"><input type="'+DataType+'" maxlength="'+MaxChar+'" id="'+input_id+'"></td><td style="width:2%;font-weight:bold;font-size:15px;">    </td></tr></table></li>'
+												screensettingsdataShow=screensettingsdataShow+'<li style="" ><table style="width:100%"><tr><td style="width:10%;font-weight:bold;font-size:15px;">'+DataCap+'</td></tr><tr><td style="width:80%"><input type="'+DataType+'" maxlength="'+MaxChar+'" id="'+input_id+'"></td><td style="width:2%;font-weight:bold;font-size:15px;">    </td></tr></table></li>'
 												}
 											}
 											localStorage.screensettingsdataShow=screensettingsdataShow
@@ -294,10 +293,8 @@ function submit_data(){
 							$("#success_msg").text("Submitted Successfully");
 							
 							
-							
-							
 //				==========================================================	
-							//localStorage.picFlag=0	
+							localStorage.picFlag=0	
 							var imageDiv="myImage1" 
 							var imageText="prPhoto1"
 							var image = document.getElementById(imageDiv);
@@ -322,15 +319,13 @@ function submit_data(){
 							$("#"+imageText3).val(imagePath3);
 
 //				==========================================================	
-
-
+							
+							
+							
+							
+							
 							$.afui.loadContent("#msg_page",true,true,'right');
 							location.reload();
-							
-							
-							
-							
-							
 						
 						}
 						
@@ -381,7 +376,6 @@ function savedVisit(){
 	var imageFileID2 =$("#prPhoto2").val();
 	var imageFileID3 =$("#prPhoto3").val();
 	if (imageFileID1=='' || imageFileID2=='' || imageFileID3==''){errorFlag_save=1}
-	errorFlag_save=0
 	if (errorFlag_save==1){
 		$("#error_msg").text("Field Value and image is required");
 		
@@ -419,9 +413,8 @@ function savedVisit(){
 		}
 		
 		
-		
-		/				==========================================================	
-				//localStorage.picFlag=0	
+//				==========================================================	
+				localStorage.picFlag=0	
 				var imageDiv="myImage1" 
 				var imageText="prPhoto1"
 				var image = document.getElementById(imageDiv);
@@ -447,14 +440,16 @@ function savedVisit(){
 					
 //				==========================================================
 		
+		
+		
 	}
 	
 }	
 
 
-//======================= show_submit_save Start  ==============================
-	  
-	  //------------------Jolly Start------------------------------
+//======================= show_submit_save Start  ==============================  
+//------------------Jolly Start------------------------------
+
 function show_savedVisit() { 
 	//alert (localStorage.saved_data)
 
@@ -488,70 +483,12 @@ function show_savedVisit() {
 			var input_id=''+i.toString()
 			saved_dataShow=saved_dataShow+'<input  name="'+input_id+'" id="'+input_id+'" type="hidden" value="'+saved_dataShowGet+'">'
 			
-			//------------------Shima 2018/07/10 Start------------------------------
-			saved_dataShow=saved_dataShow+'<table width="80%" style="border:1px solid #d3d3d3;border-radius:3px" align="center"><tr><td width="40%" style="padding-left:5px" align="left">'+showinfo+'</td><td width="40%" align="right" style="padding:2px"><input type="submit" id="sub_emp" style="color:darkblue;padding:5px;margin-right:10px;border:1px solid #aaa;background:#eee;font-weight:bold;box-shadow:1px 1px 5px #333;border-radius:3px" onclick="save_update('+i+')" value="Update"><input type="submit" id="sub_emp" style="color:darkblue;padding:5px;border:1px solid #aaa;background:#eee;font-weight:bold;box-shadow:1px 1px 5px #333;border-radius:3px" onclick="save_submit('+i+')" value="Submit"></td></tr></table><br/>'
-			//------------------Shima 2018/07/10 End------------------------------
 			
+			saved_dataShow=saved_dataShow+'<table width="80%" style="border:1px solid #d3d3d3;border-radius:3px" align="center"><tr><td width="40%" style="padding-left:5px" align="left">'+showinfo+'</td><td width="40%" align="right" style="padding:2px"><input type="submit" id="sub_emp" style="color:darkblue;padding:5px;border:1px solid #aaa;background:#eee;font-weight:bold;box-shadow:1px 1px 5px #333;border-radius:3px" onclick="save_submit('+i+')" value="Submit"></td></tr></table><br/>'
 		}
-		
-		
 	}
 	
     
-	
-	var imageFileName=saved_dataShowGet.split('&imageFileName=')[1].split('&imageFileName1=')[0]  
-	var imageFileName1=saved_dataShowGet.split('&imageFileName1=')[1].split('&imageFileName2=')[0]   
-	var imageFileName2=saved_dataShowGet.split('&imageFileName2=')[1].split('&imageFileID1=')[0]    
-	var imageFileID1=saved_dataShowGet.split('&imageFileID1=')[1].split('&imageFileID2=')[0]     
-	var imageFileID2=saved_dataShowGet.split('&imageFileID2=')[1].split('&imageFileID3=')[0]    
-	var imageFileID3=saved_dataShowGet.split('&imageFileID3=')[1]
-	
-	
-	
-	
-	if (imageFileID3==''){
-		localStorage.picFlag=2
-	}
-	else if (imageFileID2==''){
-		localStorage.picFlag=1
-	}
-	else {
-		localStorage.picFlag=0
-	}
-	
-	var imageDiv="myImage1" 
-	var imageText="prPhoto1"
-	var image = document.getElementById(imageDiv);
-	image.src = imageFileID1;
-	imagePath = imageFileID1;
-	$("#"+imageText).val(imagePath);
-	
-	
-	
-	var imageDiv2="myImage2"
-	var imageText2="prPhoto2"
-	var image2 = document.getElementById(imageDiv2);
-	image2.src = imageFileID2;
-	imagePath2 = imageFileID2;
-	$("#"+imageText2).val(imagePath2);
-		
-		
-	var imageDiv3="myImage3"
-	var imageText3="prPhoto3"
-	var image3 = document.getElementById(imageDiv3);
-	image3.src = imageFileID3;
-	imagePath3 = imageFileID3;
-	$("#"+imageText3).val(imagePath3);	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
 	localStorage.saved_dataShow=saved_dataShow
   	$("#savedVisitRecord").empty();
 	$('#savedVisitRecord').html(localStorage.saved_dataShow);
@@ -608,36 +545,6 @@ function show_savedVisitReplace() {
 			
 }	 
 
-//------------------Shima 2018/07/10 Start------------------------------
-
-function save_update(i){
-	
-	var inpuName=''+i.toString()
-	var getValueUpdate=$("#"+inpuName).val();
-	
-	getValUp=getValueUpdate.split('<rdrd>')
-	
-	getValUpdateSet=''
-	for(k=0; k<getValUp.length-1; k++){
-			 var getValUpdate=getValUp[k]
-			 getValUpdateSet=getValUpdate.split("<fdfd>")[1]
-			 	//alert(getValUpdateSet)
-			var input_id='input_'+k.toString()
-			$("#"+input_id).val(getValUpdateSet);
-		
-	}
-	$.afui.loadContent("#pageHomeView",true,true,'right');	
-	
-	var saved_data=localStorage.saved_data
-	saved_dataList=saved_data.split('<savedsaved>')
-	RemoveDataStr=saved_dataList[i]
-	saved_dataReplace=saved_data.replace(RemoveDataStr,'')
-	localStorage.saved_data=saved_dataReplace
-	
-}
-
-//------------------Shima 2018/07/10 End------------------------------
-
 function save_submit(i){
 	var inpuName=''+i.toString()
 	var getValue=$("#"+inpuName).val();
@@ -688,6 +595,32 @@ function save_submit(i){
 				
 				show_savedVisitReplace()
 					
+//				==========================================================	
+				localStorage.picFlag=0	
+				var imageDiv="myImage1" 
+				var imageText="prPhoto1"
+				var image = document.getElementById(imageDiv);
+				image.src = '';
+				imagePath = '';
+				$("#"+imageText).val(imagePath);
+			
+			
+				var imageDiv2="myImage2"
+				var imageText2="prPhoto2"
+				var image2 = document.getElementById(imageDiv2);
+				image2.src = '';
+				imagePath2 = '';
+				$("#"+imageText2).val(imagePath2);
+			
+		
+				var imageDiv3="myImage3"
+				var imageText3="prPhoto3"
+				var image3 = document.getElementById(imageDiv3);
+				image3.src = '';
+				imagePath3 = '';
+				$("#"+imageText3).val(imagePath3);
+					
+//				==========================================================	
 				//upload_image(imageFileID, imageFileName);
 				
 				$.afui.loadContent("#msg_page",true,true,'right');
