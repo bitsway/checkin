@@ -381,6 +381,36 @@ function savedVisit(){
 		
 		}
 		
+		
+		//				==========================================================	
+				localStorage.picFlag=0	
+				var imageDiv="myImage1" 
+				var imageText="prPhoto1"
+				var image = document.getElementById(imageDiv);
+				image.src = '';
+				imagePath = '';
+				$("#"+imageText).val(imagePath);
+			
+			
+				var imageDiv2="myImage2"
+				var imageText2="prPhoto2"
+				var image2 = document.getElementById(imageDiv2);
+				image2.src = '';
+				imagePath2 = '';
+				$("#"+imageText2).val(imagePath2);
+			
+		
+				var imageDiv3="myImage3"
+				var imageText3="prPhoto3"
+				var image3 = document.getElementById(imageDiv3);
+				image3.src = '';
+				imagePath3 = '';
+				$("#"+imageText3).val(imagePath3);
+					
+//				==========================================================
+		
+		
+		
 	}
 	
 }	
