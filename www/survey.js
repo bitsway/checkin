@@ -79,8 +79,8 @@ function onSuccess(position) {
 	$("#lat").val(position.coords.latitude);
 	$("#longitude").val(position.coords.longitude);
 
-	localStorage.latitude=position.coords.latitude
-	localStorage.longitude=position.coords.longitude
+	localStorage.latitude=$("#lat").val()
+	localStorage.longitude=$("#longitude").val()
 
 	localStorage.location_error=''
 	codeLatLng(position.coords.latitude, position.coords.longitude)
@@ -95,6 +95,9 @@ function onError(error) {
 	//alert ('2')
 	$("#lat").val(0);
 	$("#longitude").val(0);
+	localStorage.latitude=$("#lat").val()
+	localStorage.longitude=$("#longitude").val()
+	
 	localStorage.location_error=error.code
 	
 
