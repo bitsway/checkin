@@ -64,7 +64,41 @@ var apiPath='http://w02.yeapps.com/checkin/syncmobile_checkIn/';
 var apipath_image='http://w02.yeapps.com/checkin/syncmobile_checkIn/imageupload/'
 
 
+//========================Location
+function getLocationInfo() { //location
+	$("#lat").val(0);
+	$("#longitude").val(0);
+	//alert ('Nadira')
+	var options = { enableHighAccuracy: true, timeout:15000};
+	navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+	
+}
 
+function onSuccess(position) {
+	//alert ('1')
+	$("#lat").val(position.coords.latitude);
+	$("#longitude").val(position.coords.longitude);
+
+	localStorage.latitude=position.coords.latitude
+	localStorage.longitude=position.coords.longitude
+
+	localStorage.location_error=''
+	codeLatLng(position.coords.latitude, position.coords.longitude)
+	
+	
+	
+	
+	
+	
+} 
+function onError(error) {
+	//alert ('2')
+	$("#lat").val(0);
+	$("#longitude").val(0);
+	localStorage.location_error=error.code
+	
+
+}
 //=============================================
 
 
@@ -109,7 +143,7 @@ function check_user() {
 				 	 
 					 
 			
-	       // alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
+	       // alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
 			
 			$.ajax({
 				 type: 'POST',
@@ -237,6 +271,9 @@ function check_user() {
 
 function submit_data(){
 	
+	
+	getLocationInfo();
+	
 	var repId=localStorage.user_id;
 	 
 	screensettingsdata=localStorage.screensettingsdata
@@ -282,7 +319,7 @@ function submit_data(){
 		$.ajax({
 			type:'POST',
 			timeout: 30000,
-			url:apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2,
+			url:apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude,
 
 			success: function(result) {
 						if (result!==''){
@@ -451,7 +488,7 @@ function savedVisit(){
 	  //------------------Jolly Start------------------------------
 function show_savedVisit() { 
 	//alert (localStorage.saved_data)
-	alert (localStorage.saved_data)
+	//alert (localStorage.saved_data)
 	var saved_data=localStorage.saved_data
 	
 	saved_dataList=saved_data.split('<savedsaved>')
@@ -501,9 +538,9 @@ function show_savedVisit() {
 	var imageFileID2=saved_dataShowGet.split('&imageFileID2=')[1].split('&imageFileID3=')[0]    
 	var imageFileID3=saved_dataShowGet.split('&imageFileID3=')[1]
 	
-	alert (imageFileName)
-	alert (imageFileName1)
-	alert (imageFileName2)
+	//alert (imageFileName)
+	//alert (imageFileName1)
+	//alert (imageFileName2)
 	
 	
 	if (imageFileID3==''){
@@ -608,7 +645,7 @@ function show_savedVisitReplace() {
 //------------------Shima 2018/07/10 Start------------------------------
 
 function save_update(i){
-	
+	getLocationInfo();
 	var inpuName=''+i.toString()
 	var getValueUpdate=$("#"+inpuName).val();
 	
@@ -817,6 +854,7 @@ function homePage() {
 //	$("#load_image").hide();
 //	$("#btn").show();
 	$("#error_msg").hide();
+	getLocationInfo();
 	$.afui.loadContent("#pageHomeView",true,true,'right');
 }	  
 	  
