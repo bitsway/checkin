@@ -246,6 +246,8 @@ function check_user() {
 											//alert (screensettingsdataShow)
 									
 									$('#cm_supCode').val(localStorage.user_id)	
+									
+									getLocationInfo();
 									$.afui.loadContent("#pageHomeView",true,true,'right');
 							    }
 								 
