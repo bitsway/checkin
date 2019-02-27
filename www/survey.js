@@ -988,3 +988,22 @@ function failProfile(error) {
 
 
 /************  Image **************/
+
+function getAttImage() {
+	navigator.camera.getPicture(onSuccessAtt, onFailAtt, { quality: 90,
+	targetWidth: 600,
+	destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true});		
+}
+
+function onSuccessAtt(imageURI) {		
+	var image = document.getElementById('myImageAtt');
+	image.src = imageURI;
+	imagePathAtt = imageURI;	
+	$("#imageAtt").val(imagePathAtt);
+	
+}
+
+function onFailAtt(message) {
+	imagePathAtt="";
+	alert('Failed because: ' + message);
+}
