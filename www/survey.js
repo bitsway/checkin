@@ -155,9 +155,7 @@ function check_user() {
 			$("#error_login").html('Network Timeout. Please check your Internet connection..1');
 													},
 			success:function(data, status,xhr){
-		//$.post(apipath_base_photo_dm,{ },
-//    	function(data, status){
-			//alert (data)
+
 			if (status=='success'){	 
 				localStorage.base_url='';
 				
@@ -165,128 +163,135 @@ function check_user() {
 				var resultArray = dtaStr.split('<fd>');	
 				var apiPath=resultArray[0]
 				var apipath_image=resultArray[1];
+				
+				
+				//======================================
+						$.ajax({
+							 type: 'POST',
+							 timeout: 30000,
+											
+							 
+							 url: apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version,
+							 success: function(result) {	
+									
+									if (result==''){		
+										$("#error_login").html("Sorry Network not available");
 			
+									
+										$("#wait_image_login").hide();
+										$("#loginButton").show();
+									}
+									else{
+										
+										
+										var resultArray = result.split('<SYNCDATA>');			
+										if (resultArray[0]=='FAILED'){
+											
+											$("#wait_image_login").hide();
+											$("#loginButton").show();
+											
+											$("#error_login").html("Please enter valid  CID, User ID and Password");
+			
+											
+											
+										}
+										if (resultArray[0]=='SUCCESS'){
+											
+											
+											$("#wait_image_login").hide();
+											$("#loginButton").show();
+											
+											localStorage.screensettingsdata=resultArray[1];
+			
+											localStorage.d_version=resultArray[2];
+			
+											localStorage.up_version=resultArray[3];
+			
+											localStorage.syncCode=resultArray[4];
+			
+											localStorage.synced='YES';
+														
+											//alert (localStorage.synced)		
+													
+											var screensettingsdata=localStorage.screensettingsdata
+			
+											screensettingsdataListStr=screensettingsdata.split('<rdrd>');
+			
+											var screensettingsdataShow=''
+														//alert ('AA')
+														for (i=0; i<screensettingsdataListStr.length-1; i++)
+														
+														{
+															DataShowList=screensettingsdataListStr[i].split('<fdfd>')
+															var DataShow=DataShowList[0]   //# dataName
+															var DataCap=DataShowList[1]	   //# dataCaption
+															var DataType=DataShowList[2]   //# dataType
+															var MaxChar=DataShowList[3]   //# maxChar
+															
+															var combo_note=DataShowList[6]
+															
+															var input_id='input_'+i.toString()
+															
+															
+															if (DataType=='COMBO'){
+																combList = ''
+																comvalList=combo_note.split(',')
+																//alert(comvalList)
+																combList='<li style="" ><table style="width:100%"><tr><td style="width:10%;font-weight:bold;font-size:15px;">'+DataCap+'</td></tr><tr><td style="width:80%"><select name="'+input_id+'" id="'+input_id+'" >'
+																
+																combList=combList+'<option value="Selec type" selected="selected">Select type</option>'
+																
+																for (var j=0; j < comvalList.length; j++){	
+																	combList=combList +'<option value="'+comvalList[j]+'">'+comvalList[j]+'</option>'	
+							
+																}
+															
+																combList=combList+'</td><td style="width:2%;font-weight:bold;font-size:15px;"></td></tr></table></li></select>'
+																screensettingsdataShow=screensettingsdataShow+combList
+															//localStorage.combList=combList;
+															
+															
+															}else{
+															
+															screensettingsdataShow=screensettingsdataShow+'<li style="" ><table style="width:100%"><tr><td style="width:10%;font-weight:bold;font-size:15px;">'+DataCap+'</td></tr><tr><td style="width:80%"><input type="'+DataType+'" maxlength="'+MaxChar+'" id="'+input_id+'"></td><td style="width:2%;font-weight:bold;font-size:15px;">    </td></tr></table></li>'
+															}
+														}
+														localStorage.screensettingsdataShow=screensettingsdataShow
+														
+														var screensettings_id_ob=$('#screensettings_id');
+														screensettings_id_ob.empty()
+														screensettings_id_ob.append(screensettingsdataShow);
+														//alert (screensettingsdataShow)
+												
+												$('#cm_supCode').val(localStorage.user_id)	
+												
+												getLocationInfo();
+												$.afui.loadContent("#pageHomeView",true,true,'right');
+											}
+											 
+									
+											$("#loginButton").show();  
+																		
+									
+									}
+								  },
+			
+								error: function(result) {
+									
+									$("#error_login").html("Network error has occurred please try again!");
+									$("#wait_image_login").hide();
+									$("#loginButton").show();
+								
+							  }
+						  });//end ajax
+				//==================================
+				
+			}
 	       // alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
 			
-			$.ajax({
-				 type: 'POST',
-				 timeout: 30000,
-								
-				 
-				 url: apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version,
-				 success: function(result) {	
-				 		
-						if (result==''){		
-							$("#error_login").html("Sorry Network not available");
-
-						
-							$("#wait_image_login").hide();
-							$("#loginButton").show();
-						}
-						else{
-							
-							
-							var resultArray = result.split('<SYNCDATA>');			
-							if (resultArray[0]=='FAILED'){
-								
-								$("#wait_image_login").hide();
-								$("#loginButton").show();
-								
-								$("#error_login").html("Please enter valid  CID, User ID and Password");
-
-								
-								
-							}
-							if (resultArray[0]=='SUCCESS'){
-								
-								
-								$("#wait_image_login").hide();
-								$("#loginButton").show();
-								
-								localStorage.screensettingsdata=resultArray[1];
-
-								localStorage.d_version=resultArray[2];
-
-								localStorage.up_version=resultArray[3];
-
-								localStorage.syncCode=resultArray[4];
-
-								localStorage.synced='YES';
-											
-								//alert (localStorage.synced)		
-										
-								var screensettingsdata=localStorage.screensettingsdata
-
-								screensettingsdataListStr=screensettingsdata.split('<rdrd>');
-
-								var screensettingsdataShow=''
-											//alert ('AA')
-											for (i=0; i<screensettingsdataListStr.length-1; i++)
-											
-											{
-												DataShowList=screensettingsdataListStr[i].split('<fdfd>')
-												var DataShow=DataShowList[0]   //# dataName
-												var DataCap=DataShowList[1]	   //# dataCaption
-												var DataType=DataShowList[2]   //# dataType
-												var MaxChar=DataShowList[3]   //# maxChar
-												
-												var combo_note=DataShowList[6]
-												
-												var input_id='input_'+i.toString()
-												
-												
-												if (DataType=='COMBO'){
-													combList = ''
-													comvalList=combo_note.split(',')
-													//alert(comvalList)
-													combList='<li style="" ><table style="width:100%"><tr><td style="width:10%;font-weight:bold;font-size:15px;">'+DataCap+'</td></tr><tr><td style="width:80%"><select name="'+input_id+'" id="'+input_id+'" >'
-													
-													combList=combList+'<option value="Selec type" selected="selected">Select type</option>'
-													
-													for (var j=0; j < comvalList.length; j++){	
-														combList=combList +'<option value="'+comvalList[j]+'">'+comvalList[j]+'</option>'	
-			  	
-													}
-												
-													combList=combList+'</td><td style="width:2%;font-weight:bold;font-size:15px;"></td></tr></table></li></select>'
-													screensettingsdataShow=screensettingsdataShow+combList
-												//localStorage.combList=combList;
-												
-												
-												}else{
-												
-												screensettingsdataShow=screensettingsdataShow+'<li style="" ><table style="width:100%"><tr><td style="width:10%;font-weight:bold;font-size:15px;">'+DataCap+'</td></tr><tr><td style="width:80%"><input type="'+DataType+'" maxlength="'+MaxChar+'" id="'+input_id+'"></td><td style="width:2%;font-weight:bold;font-size:15px;">    </td></tr></table></li>'
-												}
-											}
-											localStorage.screensettingsdataShow=screensettingsdataShow
-											
-											var screensettings_id_ob=$('#screensettings_id');
-											screensettings_id_ob.empty()
-											screensettings_id_ob.append(screensettingsdataShow);
-											//alert (screensettingsdataShow)
-									
-									$('#cm_supCode').val(localStorage.user_id)	
-									
-									getLocationInfo();
-									$.afui.loadContent("#pageHomeView",true,true,'right');
-							    }
-								 
-						
-								$("#loginButton").show();  
-															
-						
-						}
-				      },
-
-				    error: function(result) {
-						
-						$("#error_login").html("Network error has occurred please try again!");
-						$("#wait_image_login").hide();
-						$("#loginButton").show();
-					
-				  }
-			  });//end ajax
-			}//end first ajax
+			
+			}
+			});//end first ajax
 		 }//alse		
 
 }
