@@ -60,8 +60,8 @@ $.afui.useOSThemes=false;
 
 
 //var apiPath='http://127.0.0.1:8000/check_in/syncmobile_checkIn/';
-var apiPath='http://w02.yeapps.com/checkin/syncmobile_checkIn/';
-var apipath_image='http://w02.yeapps.com/checkin/syncmobile_checkIn/imageupload/'
+//var apiPath='http://w02.yeapps.com/checkin/syncmobile_checkIn/';
+//var apipath_image='http://w02.yeapps.com/checkin/syncmobile_checkIn/imageupload/'
 
 
 //========================Location
@@ -144,7 +144,27 @@ function check_user() {
 				}
 				
 				 	 
-					 
+			var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_live_web/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+			$.ajax(apipath_base_photo_dm,{
+								// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
+			type: 'POST',
+			timeout: 30000,
+			error: function(xhr) {
+			$("#wait_image_login").hide();
+			$("#loginButton").show();
+			$("#error_login").html('Network Timeout. Please check your Internet connection..1');
+													},
+			success:function(data, status,xhr){
+		//$.post(apipath_base_photo_dm,{ },
+//    	function(data, status){
+			//alert (data)
+			if (status=='success'){	 
+				localStorage.base_url='';
+				
+				var dtaStr=data.replace('<start>','').replace('<end>','')
+				var resultArray = dtaStr.split('<fd>');	
+				var apiPath=resultArray[0]
+				var apipath_image=resultArray[1];
 			
 	       // alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
 			
@@ -266,7 +286,7 @@ function check_user() {
 					
 				  }
 			  });//end ajax
-	
+			}//end first ajax
 		 }//alse		
 
 }
