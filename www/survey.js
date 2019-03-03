@@ -124,8 +124,8 @@ function check_user() {
 			$("#loginButton").hide();
 			$("#wait_image_login").show(); 
 			 
-			localStorage.cid=cid;
-			localStorage.user_id=user_id;
+			localStorage.cid=cid.toUpperCase();
+			localStorage.user_id=user_id.toUpperCase();
 			localStorage.user_pass=user_pass;
 			
 			localStorage.synced='NO'
