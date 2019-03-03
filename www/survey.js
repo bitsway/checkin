@@ -981,7 +981,68 @@ function cameraError(message){
     //alert("Canceled!"); 
 	
 }
+//=====================================
+function takePictureG(){
+navigator.camera.getPicture( cameraSuccess, cameraError, {
+		quality: 90,
+		targetWidth: 400,
+		sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
+       // destinationType: Camera.DestinationType.FILE_URI,
+		destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true ,
+        correctOrientation: true,
+        saveToPhotoAlbum: true
+    }); 
+	
+}
 
+function cameraSuccessG(uri){  
+	//localStorage.picFlag=0
+	//alert (localStorage.picFlag)
+	var picNo=parseInt(localStorage.picFlag)+1 
+	localStorage.picFlag=picNo
+	if (picNo==1){
+		var imageDiv="myImage1" 
+		var imageText="prPhoto1"
+		var image = document.getElementById(imageDiv);
+		image.src = uri;
+		imagePath = uri;
+		$("#"+imageText).val(imagePath);
+	
+	
+	
+		}
+	
+	if (picNo==2){
+		var imageDiv2="myImage2"
+		var imageText2="prPhoto2"
+		var image2 = document.getElementById(imageDiv2);
+		image2.src = uri;
+		imagePath2 = uri;
+		$("#"+imageText2).val(imagePath2);
+	
+	
+	
+	
+		}
+	if (picNo==3){
+		var imageDiv3="myImage3"
+		var imageText3="prPhoto3"
+		var image3 = document.getElementById(imageDiv3);
+		image3.src = uri;
+		imagePath3 = uri;
+		$("#"+imageText3).val(imagePath3);
+		}
+	
+	 
+	
+        
+}
+
+function cameraErrorG(message){
+	var a=''
+    //alert("Canceled!"); 
+	
+}
 
 /************  Image **************/
 
