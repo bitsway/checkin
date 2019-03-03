@@ -146,6 +146,7 @@ function check_user() {
 				 	 
 			var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_checkin/get_path?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
 			alert (apipath_base_photo_dm)
+			
 			$.ajax(apipath_base_photo_dm,{
 								// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
 			type: 'POST',
