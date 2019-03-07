@@ -166,6 +166,9 @@ function check_user() {
 				var apiPath=resultArray[0]
 				var apipath_image=resultArray[1];
 				
+				localStorage.apiPath=apiPath
+				localStorage.apipath_image=apipath_image
+				
 				
 				//======================================
 						//alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
@@ -304,7 +307,7 @@ function check_user() {
 
 function submit_data(){
 	
-	
+	apiPath=localStorage.apiPath
 	getLocationInfo();
 	
 	var repId=localStorage.user_id;
@@ -1060,8 +1063,10 @@ function upload_image(imageURI, imageName) {
 	options.chunkedMode = false;
 	
     var ft = new FileTransfer();
+    var apipath_image=localStorage.apipath_image
+    ft.upload(imageURI, encodeURI(apipath_image),winProfile,failProfile,options);
 	
-    ft.upload(imageURI, encodeURI("http://i001.yeapps.com/image_hub/uniext_checkin/upload_imageCheckin/"),winProfile,failProfile,options);
+    // ft.upload(imageURI, encodeURI("http://i001.yeapps.com/image_hub/uniext_checkin/upload_imageCheckin/"),winProfile,failProfile,options);
   	
  
 }
