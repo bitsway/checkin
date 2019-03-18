@@ -144,10 +144,10 @@ function check_user() {
 				}
 				
 
-			//var  apipath_base_photo_dm='http://127.0.0.1:8000/check_in/syncmobile_checkIn/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
+			var  apipath_base_photo_dm='http://127.0.0.1:8000/check_in/syncmobile_checkIn/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
 				 	 
 				 	 
-			var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_checkin/get_path?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
+			//var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_checkin/get_path?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
 			//alert (apipath_base_photo_dm)
 			
 			$.ajax(apipath_base_photo_dm,{
@@ -170,18 +170,14 @@ function check_user() {
 				var apipath_image=resultArray[1];
 				
 				
-				
-				localStorage.apiPath=apiPath
-				localStorage.apipath_image=apipath_image
-				
 				//======================================
-						//alert (localStorage.apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version+'&image='+localStorage.image+'&gallery='+localStorage.gallery)
+						//alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version+'&image='+localStorage.image+'&gallery='+localStorage.gallery)
 						$.ajax({
 							 type: 'POST',
 							 timeout: 30000,
 											
 							 
-							 url: localStorage.apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version+'&image='+localStorage.image+'&gallery='+localStorage.gallery,
+							 url: apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version+'&image='+localStorage.image+'&gallery='+localStorage.gallery,
 							 success: function(result) {	
 									
 									if (result==''){		
@@ -319,7 +315,7 @@ function check_user() {
 				//==================================
 				
 			}
-	       // alert (localStorage.apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
+	       // alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
 			
 			
 			}
@@ -357,69 +353,66 @@ function submit_data(){
 	} 
 	if (imageFileID1=='' || imageFileID2=='' || imageFileID3==''){errorFlag=1}
 	//alert (errorFlag)
-	//errorFlag=0
 	if(errorFlag==1){
 		$("#error_msg").text("Field Value and image is required");
 		$("#error_msg").show();
 		
 	}else{
-		
 		$("#load_image").show();
 		$("#btn").hide();
 		var imageFileID1 =$("#prPhoto1").val();
 		var imageFileID2 =$("#prPhoto2").val();
 		var imageFileID3 =$("#prPhoto3").val();
-	
+		
 		var tempTime = $.now();
 		var tempTime1 = $.now();
 		var tempTime2 = $.now();
-		
 		var imageFileName =tempTime.toString()+"_pss.jpg";
 		var imageFileName1 =tempTime1.toString()+"_pss1.jpg";
 		var imageFileName2 =tempTime2.toString()+"_pss2.jpg";
-		
 
-		//alert  (localStorage.apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude)
+
+		//alert  (apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName)
 
 		$.ajax({
 			type:'POST',
 			timeout: 30000,
-			url:localStorage.apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude,
+			url:apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude,
 
 			success: function(result) {
 						if (result!==''){
-							//alert('ok2')
 							
-							//upload_image(imageFileID1, imageFileName);
-//							upload_image(imageFileID2, imageFileName1);
-//							upload_image(imageFileID3, imageFileName2);
+							
+							upload_image(imageFileID1, imageFileName);
+							upload_image(imageFileID2, imageFileName1);
+							upload_image(imageFileID3, imageFileName2);
 							$("#success_msg").text("Submitted Successfully");
 							
 							
 //				==========================================================	
-						//localStorage.picFlag=0	
-//						var imageDiv="myImage1" 
-//						var imageText="prPhoto1"
-//						var image = document.getElementById(imageDiv);
-//						image.src = '';
-//						imagePath = '';
-//						$("#"+imageText).val(imagePath);
-//						
-//						
-//						var imageDiv2="myImage2"
-//						var imageText2="prPhoto2"
-//						var image2 = document.getElementById(imageDiv2);
-//						image2.src = '';
-//						imagePath2 = '';
-//						$("#"+imageText2).val(imagePath2);
-//						
-//						
-//						var imageDiv3="myImage3"
-//						var imageText3="prPhoto3"
-//						var image3 = document.getElementById(imageDiv3);
-//						image3.src = '';
-//						imagePath3 = '';
-//						$("#"+imageText3).val(imagePath3);
+						localStorage.picFlag=0	
+						var imageDiv="myImage1" 
+						var imageText="prPhoto1"
+						var image = document.getElementById(imageDiv);
+						image.src = '';
+						imagePath = '';
+						$("#"+imageText).val(imagePath);
+						
+						
+						var imageDiv2="myImage2"
+						var imageText2="prPhoto2"
+						var image2 = document.getElementById(imageDiv2);
+						image2.src = '';
+						imagePath2 = '';
+						$("#"+imageText2).val(imagePath2);
+						
+						
+						var imageDiv3="myImage3"
+						var imageText3="prPhoto3"
+						var image3 = document.getElementById(imageDiv3);
+						image3.src = '';
+						imagePath3 = '';
+						$("#"+imageText3).val(imagePath3);
 
 //				==========================================================
 							
@@ -476,7 +469,7 @@ function savedVisit(){
 	var imageFileID2 =$("#prPhoto2").val();
 	var imageFileID3 =$("#prPhoto3").val();
 	if (imageFileID1=='' || imageFileID2=='' || imageFileID3==''){errorFlag_save=1}
-	//errorFlag_save=0
+	errorFlag_save=0
 	if (errorFlag_save==1){
 		$("#error_msg").text("Field Value and image is required");
 		
@@ -493,7 +486,7 @@ function savedVisit(){
 		var imageFileName1 =tempTime1.toString()+"_pss1.jpg";
 		var imageFileName2 =tempTime2.toString()+"_pss2.jpg";
 
-		var saveData=localStorage.apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&imageFileID1='+imageFileID1+'&imageFileID2='+imageFileID2+'&imageFileID3='+imageFileID3
+		var saveData=apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&imageFileID1='+imageFileID1+'&imageFileID2='+imageFileID2+'&imageFileID3='+imageFileID3
 		
 		localStorage.saved_data=localStorage.saved_data+saveData+'<savedsaved>'
 		
@@ -585,7 +578,7 @@ function show_savedVisit() {
 			saved_dataShow=saved_dataShow+'<input  name="'+input_id+'" id="'+input_id+'" type="hidden" value="'+saved_dataShowGet+'">'
 			
 			//------------------Shima 2018/07/10 Start------------------------------
-			saved_dataShow=saved_dataShow+'<table width="80%" style="border:1px solid #bcb6b6b3;border-radius:3px" align="center"><tr><td width="40%" style="padding-left:5px" align="left">'+showinfo+'</td><td width="40%" align="right" style="padding:2px"><input type="submit" id="sub_emp" style="color:#eee;padding:5px;margin-right:10px;border:1px solid #aaa;background:#e43888;font-weight:bold;border-radius:3px" onclick="save_update('+i+')" value="Update"><input type="submit" id="sub_emp" style="color:#eee;padding:5px;border:1px solid #aaa;background:#e43888;font-weight:bold;border-radius:3px" onclick="save_submit('+i+')" value="Submit"></td></tr></table><br/>'
+			saved_dataShow=saved_dataShow+'<table width="80%" style="border:1px solid #d3d3d3;border-radius:3px" align="center"><tr><td width="40%" style="padding-left:5px" align="left">'+showinfo+'</td><td width="40%" align="right" style="padding:2px"><input type="submit" id="sub_emp" style="color:darkblue;padding:5px;margin-right:10px;border:1px solid #aaa;background:#eee;font-weight:bold;box-shadow:1px 1px 5px #333;border-radius:3px" onclick="save_update('+i+')" value="Update"><input type="submit" id="sub_emp" style="color:darkblue;padding:5px;border:1px solid #aaa;background:#eee;font-weight:bold;box-shadow:1px 1px 5px #333;border-radius:3px" onclick="save_submit('+i+')" value="Submit"></td></tr></table><br/>'
 			//------------------Shima 2018/07/10 End------------------------------
 			
 		}
@@ -694,7 +687,7 @@ function show_savedVisitReplace() {
 			saved_dataShow=saved_dataShow+'<input  name="'+input_id+'" id="'+input_id+'" type="hidden" value="'+saved_dataShowGet+'">'
 			
 			
-			saved_dataShow=saved_dataShow+'<table width="80%" style="border:1px solid #d3d3d3;border-radius:3px" align="center"><tr><td width="40%" style="padding-left:5px" align="left">'+showinfo+'</td><td width="40%" align="right" style="padding:2px"><input type="submit" id="sub_emp" style="color:darkblue;padding:5px;border:1px solid #aaa;background:#eee;font-weight:bold;border-radius:3px" onclick="save_submit('+i+')" value="Submit"></td></tr></table><br/>'
+			saved_dataShow=saved_dataShow+'<table width="80%" style="border:1px solid #d3d3d3;border-radius:3px" align="center"><tr><td width="40%" style="padding-left:5px" align="left">'+showinfo+'</td><td width="40%" align="right" style="padding:2px"><input type="submit" id="sub_emp" style="color:darkblue;padding:5px;border:1px solid #aaa;background:#eee;font-weight:bold;box-shadow:1px 1px 5px #333;border-radius:3px" onclick="save_submit('+i+')" value="Submit"></td></tr></table><br/>'
 		}
 	}
 	
@@ -858,11 +851,11 @@ function version_check(dVersion, upVersion) {
 	
 	
 
-	       // alert (localStorage.apiPath+'checkVersion?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
+	       // alert (apiPath+'checkVersion?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
 			
 			$.ajax({
 				 type: 'POST',
-				 url: localStorage.apiPath+'checkVersion?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version,
+				 url: apiPath+'checkVersion?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version,
 				 success: function(result) {	
 				 		
 						if (result==''){							
@@ -1013,7 +1006,7 @@ function cameraError(message){
     //alert("Canceled!"); 
 	
 }
-=====================================
+//=====================================
 function takePictureG(){
 navigator.camera.getPicture( cameraSuccess, cameraError, {
 		quality: 90,
@@ -1093,10 +1086,7 @@ function upload_image(imageURI, imageName) {
 	
     var ft = new FileTransfer();
 	
-	var apipath_image=localStorage.apipath_image
-    ft.upload(imageURI, encodeURI(apipath_image),winProfile,failProfile,options);
-	
-   // ft.upload(imageURI, encodeURI("http://i001.yeapps.com/image_hub/uniext_checkin/upload_imageCheckin/"),winProfile,failProfile,options);
+    ft.upload(imageURI, encodeURI("http://i001.yeapps.com/image_hub/uniext_checkin/upload_imageCheckin/"),winProfile,failProfile,options);
   	
  
 }
