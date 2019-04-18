@@ -124,8 +124,8 @@ function check_user() {
 			$("#loginButton").hide();
 			$("#wait_image_login").show(); 
 			 
-			localStorage.cid=cid;
-			localStorage.user_id=user_id;
+			localStorage.cid=cid.toUpperCase();
+			localStorage.user_id=user_id.toUpperCase();
 			localStorage.user_pass=user_pass;
 			
 			localStorage.synced='NO'
@@ -143,8 +143,14 @@ function check_user() {
 					
 				}
 				
+
+			//var  apipath_base_photo_dm='http://127.0.0.1:8000/check_in/syncmobile_checkIn/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
 				 	 
-			var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_live_web/get_path?CID='+cid +'&HTTPPASS=e99business321cba'
+				 	 
+			var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_checkin/get_path?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
+			//var  apipath_base_photo_dm='http://w02.yeapps.com/checkin/syncmobile_checkIn/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
+			//alert (apipath_base_photo_dm)
+			
 			$.ajax(apipath_base_photo_dm,{
 								// cid:localStorage.cid,rep_id:localStorage.user_id,rep_pass:localStorage.user_pass,synccode:localStorage.synccode,
 			type: 'POST',
@@ -165,13 +171,19 @@ function check_user() {
 				var apipath_image=resultArray[1];
 				
 				
+				localStorage.apiPath=apiPath
+				localStorage.apipath_image=apipath_image
+				
+				
+				
 				//======================================
+						//alert (localStorage.apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version+'&image='+localStorage.image+'&gallery='+localStorage.gallery)
 						$.ajax({
 							 type: 'POST',
 							 timeout: 30000,
 											
 							 
-							 url: apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version,
+							 url: localStorage.apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version+'&image='+localStorage.image+'&gallery='+localStorage.gallery,
 							 success: function(result) {	
 									
 									if (result==''){		
@@ -209,9 +221,31 @@ function check_user() {
 			
 											localStorage.syncCode=resultArray[4];
 			
+											localStorage.image=resultArray[5];
+											localStorage.gallery=resultArray[6];
+
+											//alert(localStorage.image)
+
+			
 											localStorage.synced='YES';
-														
-											//alert (localStorage.synced)		
+
+											
+
+											if (localStorage.image=='NO'){
+
+												$(image_hide_div).hide()
+											}else {
+												$(image_hide_div).show()
+											}
+											
+
+											if (localStorage.gallery=='NO'){
+
+												$(gallery_hide_div).hide()
+											}else {
+												$(gallery_hide_div).show()
+											}
+ 
 													
 											var screensettingsdata=localStorage.screensettingsdata
 			
@@ -287,7 +321,7 @@ function check_user() {
 				//==================================
 				
 			}
-	       // alert (apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
+	       // alert (localStorage.apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
 			
 			
 			}
@@ -344,12 +378,12 @@ function submit_data(){
 		var imageFileName2 =tempTime2.toString()+"_pss2.jpg";
 
 
-		//alert  (apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName)
+		//alert  (localStorage.apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName)
 
 		$.ajax({
 			type:'POST',
 			timeout: 30000,
-			url:apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude,
+			url:localStorage.apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude,
 
 			success: function(result) {
 						if (result!==''){
@@ -458,7 +492,7 @@ function savedVisit(){
 		var imageFileName1 =tempTime1.toString()+"_pss1.jpg";
 		var imageFileName2 =tempTime2.toString()+"_pss2.jpg";
 
-		var saveData=apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&imageFileID1='+imageFileID1+'&imageFileID2='+imageFileID2+'&imageFileID3='+imageFileID3
+		var saveData=localStorage.apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&imageFileID1='+imageFileID1+'&imageFileID2='+imageFileID2+'&imageFileID3='+imageFileID3
 		
 		localStorage.saved_data=localStorage.saved_data+saveData+'<savedsaved>'
 		
@@ -823,11 +857,11 @@ function version_check(dVersion, upVersion) {
 	
 	
 
-	       // alert (apiPath+'checkVersion?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
+	       // alert (localStorage.apiPath+'checkVersion?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version)
 			
 			$.ajax({
 				 type: 'POST',
-				 url: apiPath+'checkVersion?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version,
+				 url: localStorage.apiPath+'checkVersion?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version,
 				 success: function(result) {	
 				 		
 						if (result==''){							
@@ -921,7 +955,7 @@ function takePicture(){
 navigator.camera.getPicture( cameraSuccess, cameraError, {
 		quality: 90,
 		targetWidth: 400,
-		sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
+		//sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
        // destinationType: Camera.DestinationType.FILE_URI,
 		destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true ,
         correctOrientation: true,
@@ -978,7 +1012,68 @@ function cameraError(message){
     //alert("Canceled!"); 
 	
 }
+//=====================================
+function takePictureG(){
+navigator.camera.getPicture( cameraSuccess, cameraError, {
+		quality: 90,
+		targetWidth: 400,
+		sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
+       // destinationType: Camera.DestinationType.FILE_URI,
+		destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true ,
+        correctOrientation: true,
+        saveToPhotoAlbum: true
+    }); 
+	
+}
 
+function cameraSuccessG(uri){  
+	//localStorage.picFlag=0
+	//alert (localStorage.picFlag)
+	var picNo=parseInt(localStorage.picFlag)+1 
+	localStorage.picFlag=picNo
+	if (picNo==1){
+		var imageDiv="myImage1" 
+		var imageText="prPhoto1"
+		var image = document.getElementById(imageDiv);
+		image.src = uri;
+		imagePath = uri;
+		$("#"+imageText).val(imagePath);
+	
+	
+	
+		}
+	
+	if (picNo==2){
+		var imageDiv2="myImage2"
+		var imageText2="prPhoto2"
+		var image2 = document.getElementById(imageDiv2);
+		image2.src = uri;
+		imagePath2 = uri;
+		$("#"+imageText2).val(imagePath2);
+	
+	
+	
+	
+		}
+	if (picNo==3){
+		var imageDiv3="myImage3"
+		var imageText3="prPhoto3"
+		var image3 = document.getElementById(imageDiv3);
+		image3.src = uri;
+		imagePath3 = uri;
+		$("#"+imageText3).val(imagePath3);
+		}
+	
+	 
+	
+        
+}
+
+function cameraErrorG(message){
+	var a=''
+    //alert("Canceled!"); 
+	
+}
 
 /************  Image **************/
 
@@ -997,7 +1092,9 @@ function upload_image(imageURI, imageName) {
 	
     var ft = new FileTransfer();
 	
-    ft.upload(imageURI, encodeURI("http://i001.yeapps.com/image_hub/uniext_checkin/upload_imageCheckin/"),winProfile,failProfile,options);
+	var apipath_image=localStorage.apipath_image
+    ft.upload(imageURI, encodeURI(apipath_image),winProfile,failProfile,options);
+    //ft.upload(imageURI, encodeURI("http://i001.yeapps.com/image_hub/uniext_checkin/upload_imageCheckin/"),winProfile,failProfile,options);
   	
  
 }

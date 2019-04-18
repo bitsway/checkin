@@ -63,6 +63,14 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 			overflow: hidden;
 			padding: 10px 0px 0px 0px;
 		}
+		
+		.view header{
+			background:#a2999e
+		}
+		
+		.view footer{
+			background: #a2999e
+		}
 		/********** jahangirEditedEnd16Feb css ***************/
 	 </style>
 
@@ -83,10 +91,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             </div>
     
   
-  
-            
-             
-        
+
             
             
           <!--  //============Login page Start-->
@@ -101,20 +106,20 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             <a data-role="button"  onClick="exit()"  ><img src="exit.png" style="width:30px;height:30px;  padding-top:10px; position: absolute;top: 0px;right: 2px"> </a>
             
         </header> 
-        <div class="panel" id="login" style="background-color:#e6f6ff;padding:0px">
+        <div class="panel" id="login" style="background-color:#d4d0d09c;padding:0px">
         	<br><br><br>
-            <div id="error_login" style="color:#C00;"></div>
+            <div id="error_login" style="color:black;"></div>
             <br> 
 
-            <div class="input-group" style="border:none" >
-                <form style="background-color:#e6f6ff" id="emp">
+            <div class="input-group" style="border:none">
+                <form style="background-color:#fff; color:black" id="emp">
                 	<input name="cid" id="cid" class="inp_brd" type="text" placeholder="CID" value="">	
                     <input type="text" name="user_id" id="user_id" class="inp_brd"   placeholder="User ID" value="">
                     <input type="password" name="user_pass" id="user_pass" class="inp_brd" placeholder="Password" value="">
                 </form>						
             </div>
             <div id="loginErr"></div>
-            <input type="submit" id="loginButton" onClick="check_user()"  style="width: 100%;height: 50px;background-color:skyblue;color: #FFF;font-size: 20px;border: none;" value="     Sync     "   />
+            <input type="submit" id="loginButton" onClick="check_user()"  style="width: 100%;height: 50px;background-color:#e43888;color: #FFF;font-size: 20px;border: none;" value="     Sync     "   />
             
             </br></br></br>
             <div align="center" id="wait_image_login"><img style="width:70px;height:auto" src="loading.gif" alt=""></div>
@@ -135,33 +140,42 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         	<h1 style="text-align:center;width: 100%;height: auto;color: #fff;padding: 10px; margin: 0px;">M-Reporting-B01</h1>
         	<a data-role="button"  onClick="login_page()"  ><img src="key.png" style="width:35px;height:35px;  padding-top:10px; top: 0px;right: 2px; padding-left: 5px;" ></a>
         </header>
-        <div class="panel" id="pageHomeView" style="background: #e6f6ff;"><br><br><br>
-        <div  style="overflow-y: scroll; width: 100%; height: 500px;background: #e6f6ff;overflow-x: hidden;touch-action: pan-y">
-           <table style=" border-style:hidden" width="100%" border="0" cellpadding="0" cellspacing="0" >
-        		<tr >
-           			<td  align="center" style="  width:300px; height:20px; color:black; font-size:20px; ">
-            			ক্যামেরা আইকন এ টাচ করে ছবি তুলুন 
-           			</td>
-            	</tr>
-            
+        <div class="panel" id="pageHomeView" style="background: #d4d0d09c;"><br><br><br>
+        <div  style="overflow-y: scroll; width: 100%; height: 500px;background: #d4d0d09c;overflow-x: hidden;touch-action: pan-y">
+          
+            <table style=" border-style:hidden" width="100%" border="0" cellpadding="0" cellspacing="0" >
+          		<tr >
+             			<td colspan='2'  align="center" style="  width:300px; height:20px; color:black; font-size:20px; ">
+              			ক্যামেরা আইকন এ টাচ করে ছবি তুলুন 
+             			</td>
+              	</tr>
+              
 				
-				<tr>
-					<td  align="left" style="  width:300px; height:70px; color:black; font-size:20px;">
-					&nbsp;&nbsp;&nbsp;&nbsp;<img src="camera.png" width="40" height="40" alt="TakePic" onClick="takePicture()" >
+        				<tr>
+          					<td  align="left" style="  width:300px; height:70px; color:black; font-size:20px;">
+          					&nbsp;&nbsp;&nbsp;&nbsp;
 
-					</td>
-				</tr>
+                  <div id="image_hide_div">
+                    <img src="camera.png" width="40" height="40" alt="TakePic" onClick="takePicture()" >
+                  </div>
+          					</td>
+                  <div id="gallery_hide_div">
+        					  <td  align="left" style="  width:300px; height:70px; color:black; font-size:20px;">
+        					   &nbsp;&nbsp;&nbsp;&nbsp;<img src="gallery.png" width="40" height="40" alt="TakePic" onClick="takePictureG()" >
+        					   </td>
+                  </div>
+        				</tr>
             </table>
-        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+        	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
               	<tr>
-					<td  width="50%" >
-						 <img  width="100" height="100" alt="" id="myImage1" ;>
-                         <input name="prPhoto1" id="prPhoto1" type="hidden" value="" >
-						 <img  width="100" height="100" alt="" id="myImage2" ;>
-                         <input name="prPhoto2" id="prPhoto2" type="hidden" value="" >
-						 <img  width="100" height="100" alt="" id="myImage3" ;>
-						 <input name="prPhoto3" id="prPhoto3" type="hidden" value="" >
-					</td>   
+        					<td  width="50%" >
+        						 <img  width="100" height="100" alt="" id="myImage1" ;>
+                                 <input name="prPhoto1" id="prPhoto1" type="hidden" value="" >
+        						 <img  width="100" height="100" alt="" id="myImage2" ;>
+                                 <input name="prPhoto2" id="prPhoto2" type="hidden" value="" >
+        						 <img  width="100" height="100" alt="" id="myImage3" ;>
+        						 <input name="prPhoto3" id="prPhoto3" type="hidden" value="" >
+        					</td>   
              	</tr>
             </table>
 			<ul id="screensettings_id" style=" background:transparent; padding-top:6px"></ul>
@@ -174,11 +188,11 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 			
             <div id="success_msg" align="center"></div>
 			<div id="error_msg" align="center"></div>
-				<input type="submit" id="SaveButton" onClick="submit_data()"  style="width:100%; height:50px; background:skyblue;color: #FFF; font-size:20px;  border: none;" value="     Submit     "   /> 
+				<input type="submit" id="SaveButton" onClick="submit_data()"  style="width:100%; height:50px; background:#e43888;color: #FFF; font-size:20px;  border: none;" value="     Submit     "   /> 
 				</br></br>
-				<input type="submit" id="submitSaveBtn" onClick="savedVisit()"  style="width:100%; height:50px; background:skyblue;color: #FFF; font-size:20px;  border: none;" value="     Save     "   /> 
+				<input type="submit" id="submitSaveBtn" onClick="savedVisit()"  style="width:100%; height:50px; background:#e43888;color: #FFF; font-size:20px;  border: none;" value="     Save     "   /> 
 				</br></br>
-				<input type="submit" id="showSubmitSaveBtn" onClick="show_savedVisit()"  style="width:100%; height:50px; background:skyblue;color: #FFF; font-size:20px;  border: none;" value="     Show Save     "   /> 
+				<input type="submit" id="showSubmitSaveBtn" onClick="show_savedVisit()"  style="width:100%; height:50px; background:#e43888;color: #FFF; font-size:20px;  border: none;" value="     Show Save     "   /> 
 				</br></br></br></br>
 			</div>
 			
@@ -207,7 +221,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     	<header >
         	<h2 style="text-align:center;width: 100%;height: auto;color: #fff;padding: 10px; margin: 0px;">M-Reporting-B01</h2>
         </header><br><br><br>
-        <div class="panel" id="msg_page" style="background-color:#e6f6ff;"><br><br><br><br><br><br><br><br>
+        <div class="panel" id="msg_page" style="background-color:#d4d0d09c;"><br><br><br><br><br><br><br><br>
            <table width="100%" border="0">
            		<tr>
                 	<td align="center">
@@ -239,7 +253,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         	<h2 style="text-align:center;width: 100%;height: auto;color: #fff;padding: 10px; margin: 0px;">M-Reporting-B01</h2>
         	
         </header>
-        <div class="panel" id="savedVisit_page" style="background-color:#e6f6ff;"> 
+        <div class="panel" id="savedVisit_page" style="background-color:#d4d0d09c;"> 
             <span> <br/><br/><br/><br/></span>				
 					
             <div id="savedVisitRecord" align="center">  </div><br/><br/>
