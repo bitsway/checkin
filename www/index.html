@@ -100,33 +100,33 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     
     
    <div class="view" id="loginView">
-    <div class="pages" style="background-color:#FFD9EC">
-        <header style="background-color:#97004B" >
+    <div class="pages" style=" background-color:#ECFFF5">
+        <header style="background-color:#005B00" >
         	<h2 align="center" style="font-size:18px;  font-weight: bold; color:#F8F8F8;  text-align:center;margin: 0px;padding: 9px">Login</h2> 
             <a data-role="button"  onClick="exit()"  ><img src="exit.png" style="width:30px;height:30px;  padding-top:10px; position: absolute;top: 0px;right: 2px"> </a>
             
         </header> 
-        <div class="panel" id="login" style="background-color:#d4d0d09c;padding:0px">
+        <div class="panel" id="login" style="background-color:#transparent;padding:0px">
         	<br><br><br>
             <div id="error_login" style="color:black;"></div>
             <br> 
 
-            <div class="input-group" style="border:none; background-color:#FFF2F9">
-                <form style="background-color:#FFEAF4; color:black" id="emp">
+            <div class="input-group" style="border:none; background-color:#ECFFF5">
+                <form style="background-color:#F4FFFA; color:black" id="emp">
                 	<input name="cid" id="cid" class="inp_brd" type="text" placeholder="CID" value="">	
                     <input type="text" name="user_id" id="user_id" class="inp_brd"   placeholder="User ID" value="">
                     <input type="password" name="user_pass" id="user_pass" class="inp_brd" placeholder="Password" value="">
                 </form>						
             </div>
             <div id="loginErr"></div>
-            <input type="submit" id="loginButton" onClick="check_user()"  style="width: 100%;height: 50px;background-color:#D7006B;color: #FFF;font-size: 20px;border: none;" value="     Sync     "   />
+            <input type="submit" id="loginButton" onClick="check_user()"  style="width: 100%;height: 50px;background-color:#2291FF;color: #FFF;font-size: 20px;border: none;" value="     Sync     "   />
             
             </br></br></br>
             <div align="center" id="wait_image_login"><img style="width:70px;height:auto" src="loading.gif" alt=""></div>
         </div>
     </div>
     
-        <footer style="background-color:#97004B">
+        <footer style="background-color:#005B00">
 		 <a onClick="homePage()" class="icon home" ></a>
           <a href="#imagePage"></a>
         </footer>
@@ -135,15 +135,15 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <!--//==============================smartView Page=================-->
       
 <div class="view" id="pageHome">
-    <div class="pages" style="background-color:#FFD9EC">
-        <header  style="background-color:#97004B">
+    <div class="pages" style="background-color:#ECFFF5">
+        <header  style="background-color:#005B00">
         	<h1 style="text-align:center;width: 100%;height: auto;color: #fff;padding: 10px; margin: 0px;">M-Reporting-B01</h1>
         	<a data-role="button"  onClick="login_page()"  ><img src="key.png" style="width:35px;height:35px;  padding-top:10px; top: 0px;right: 2px; padding-left: 5px;" ></a>
         </header>
-        <div class="panel" id="pageHomeView" style="background: #d4d0d09c;"><br><br><br>
-        <div  style="overflow-y: scroll; width: 100%; height: 500px;background: #d4d0d09c;overflow-x: hidden;touch-action: pan-y">
+        <div class="panel" id="pageHomeView" style="background: #ECFFF5;"><br><br><br>
+        <div  style="overflow-y: scroll; width: 100%; height: 500px;background: #ECFFF5;overflow-x: hidden;touch-action: pan-y">
           
-            <table style=" border-style:hidden" width="100%" border="0" cellpadding="0" cellspacing="0" >
+            <table style=" border-style:hidden ;background-color:#ECFFF5" width="100%" border="0" cellpadding="0" cellspacing="0" >
           		<tr >
              			<td colspan='2'  align="center" style="  width:300px; height:20px; color:black; font-size:20px; ">
               			ক্যামেরা আইকন এ টাচ করে ছবি তুলুন 
@@ -153,20 +153,27 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 				
         				<tr>
           					<td  align="left" style="  width:300px; height:70px; color:black; font-size:20px;">
-          					&nbsp;&nbsp;&nbsp;&nbsp;
+          					
 
                   <div id="image_hide_div">
                     <img src="camera.png" width="40" height="40" alt="TakePic" onClick="takePicture()" >
                   </div>
-          					</td>
+          					</td >
+                           
+        					  <td  align="left"  align="right">
+        					 
                   <div id="gallery_hide_div">
-        					  <td  align="left" style="  width:300px; height:70px; color:black; font-size:20px;">
-        					   &nbsp;&nbsp;&nbsp;&nbsp;<img src="gallery.png" width="40" height="40" alt="TakePic" onClick="takePictureG()" >
+                               <img src="gallery.png" width="40" height="40" alt="TakePic" onClick="takePictureG()" >
+                               </div>
         					   </td>
-                  </div>
+                               <td  align="left"  align="right" width="10px">
+        					 
+                  
+        					   </td>
+                  
         				</tr>
             </table>
-        	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        	  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#ECFFF5">
               	<tr>
         					<td  width="50%" >
         						 <img  width="100" height="100" alt="" id="myImage1" ;>
@@ -178,7 +185,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         					</td>   
              	</tr>
             </table>
-			<ul id="screensettings_id" style=" background:transparent; padding-top:6px" ></ul>
+			<ul id="screensettings_id" style=" background:#ECFFF5; padding-top:6px" ></ul>
             
             
             
@@ -188,11 +195,26 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 			
             <div id="success_msg" align="center"></div>
 			<div id="error_msg" align="center"></div>
-				<input type="submit" id="SaveButton" onClick="submit_data()"  style="width:100%; height:50px; background:#D7006B;color: #FFF; font-size:20px;  border: none;" value="     Submit     "   /> 
+             <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr><td >
+				<input type="submit" id="SaveButton" onClick="submit_data()"  style="width:100%; height:50px; background:#2291FF;color: #FFF; font-size:20px;  border: none;" value="     Submit     "   /> 
+                </td>
+            <td  width="2%"> </td>
+  </tr>
+</table>    
 				</br></br>
-				<input type="submit" id="submitSaveBtn" onClick="savedVisit()"  style="width:100%; height:50px; background:#D7006B;color: #FFF; font-size:20px;  border: none;" value="     Save     "   /> 
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="48%"><input type="submit" id="submitSaveBtn" onClick="savedVisit()"  style="width:100%; height:50px; background:#2291FF;color: #FFF; font-size:20px;  border: none;" value="     Save     "   /> </td>
+    <td > </td>
+    <td width="48%"><input type="submit" id="showSubmitSaveBtn" onClick="show_savedVisit()"  style="width:100%; height:50px; background:#2291FF;color: #FFF; font-size:20px;  border: none;" value="     Show Saved     "   /></td>
+    <td  width="2%"> </td>
+  </tr>
+</table>
+
+				
 				</br></br>
-				<input type="submit" id="showSubmitSaveBtn" onClick="show_savedVisit()"  style="width:100%; height:50px; background:#D7006B;color: #FFF; font-size:20px;  border: none;" value="     Show Save     "   /> 
+				 
 				</br></br></br></br>
 			</div>
 			
@@ -202,13 +224,13 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 			
 		</div>
 
-            
-         <footer style="background-color:#97004B">
+             </div>
+ </div> 
+        <!-- <footer style="background-color:#005B00">
 		
-        </footer>
-        </br>
-    </div>
- </div>  
+        </footer>-->
+       
+    
 </div> 
 
 <!--//==============================smartView Page End=================-->   
@@ -217,7 +239,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <!--//============================== msg_page Start=================-->
      
 <div class="view" id="msg_pageView">
-    <div class="pages" style="background-color:#FFD9EC">
+    <div class="pages" style="background-color:#ECFFF5">
     	<header style="background-color:#97004B" >
         	<h2 style="text-align:center;width: 100%;height: auto;color: #fff;padding: 10px; margin: 0px;">M-Reporting-B01</h2>
         </header><br><br><br>
@@ -235,7 +257,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             
 		</div>
     </div>
- 	 <footer style="background-color:#97004B">
+ 	 <footer style="background-color:#005B00">
 		 <a onClick="homePage()" class="icon home" ></a>
           <a href="#imagePage"></a>
         </footer>
@@ -248,12 +270,12 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 <!-- ============Saved visit Page Start================-->
 <div class="view" id="savedVisitView">
-    <div class="pages" style="background-color:#FFD9EC">
-    	<header style="background-color:#97004B" >
+    <div class="pages" style="background-color:#ECFFF5">
+    	<header style="background-color:#005B00" >
         	<h2 style="text-align:center;width: 100%;height: auto;color: #fff;padding: 10px; margin: 0px;">M-Reporting-B01</h2>
         	
         </header>
-        <div class="panel" id="savedVisit_page" style="background-color:#d4d0d09c;"> 
+        <div class="panel" id="savedVisit_page" style="background-color:#ECFFF5;"> 
             <span> <br/><br/><br/><br/></span>				
 					
             <div id="savedVisitRecord" align="center">  </div><br/><br/>
@@ -263,7 +285,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     </div>
          
  
-    <footer style="background-color:#97004B">
+    <footer style="background-color:#005B00">
 		 <a onClick="homePage()" class="icon home" ></a>
           <a href="#imagePage"></a>
         </footer>

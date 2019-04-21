@@ -271,7 +271,7 @@ function check_user() {
 																combList = ''
 																comvalList=combo_note.split(',')
 																//alert(comvalList)
-																combList='<li style="" ><table style="width:100%"><tr><td style="width:10%;font-size:15px;">'+DataCap+'</td></tr><tr><td style="width:80%"><select style="background-color:#FFEAF4; name="'+input_id+'" id="'+input_id+'" >'
+																combList='<li style="" ><table style="width:100%"><tr><td style="width:10%;font-size:15px;">'+DataCap+'</td></tr><tr><td style="width:80%"><select style="background-color:#F4FFFA; name="'+input_id+'" id="'+input_id+'" >'
 																
 																combList=combList+'<option value="Selec type" selected="selected">Select type</option>'
 																
@@ -287,7 +287,7 @@ function check_user() {
 															
 															}else{
 															
-															screensettingsdataShow=screensettingsdataShow+'<li style="" ><table style="width:100%"><tr><td style="width:10%;font-size:15px;">'+DataCap+'</td></tr><tr><td style="width:80%"><input style="width:100%; background-color:#FFEAF4" type="'+DataType+'" maxlength="'+MaxChar+'" id="'+input_id+'"></td><td style="width:2%;font-weight:bold;font-size:15px;">    </td></tr></table></li>'
+															screensettingsdataShow=screensettingsdataShow+'<li style="" ><table style="width:100%"><tr><td style="width:10%;font-size:15px;">'+DataCap+'</td></tr><tr><td style="width:80%"><input style="width:100%; background-color:#F4FFFA" type="'+DataType+'" maxlength="'+MaxChar+'" id="'+input_id+'"></td><td style="width:2%;font-weight:bold;font-size:15px;">    </td></tr></table></li>'
 															}
 														}
 														localStorage.screensettingsdataShow=screensettingsdataShow
@@ -584,7 +584,7 @@ function show_savedVisit() {
 			saved_dataShow=saved_dataShow+'<input  name="'+input_id+'" id="'+input_id+'" type="hidden" value="'+saved_dataShowGet+'">'
 			
 			//------------------Shima 2018/07/10 Start------------------------------
-			saved_dataShow=saved_dataShow+'<table width="80%" style="border:1px solid #d3d3d3;border-radius:3px" align="center"><tr><td width="40%" style="padding-left:5px" align="left">'+showinfo+'</td><td width="40%" align="right" style="padding:2px"><input type="submit" id="sub_emp" style="color:darkblue;padding:5px;margin-right:10px;border:1px solid #aaa;background:#D7006B; color: #FFF;font-weight:bold;box-shadow:1px 1px 5px #333;border-radius:3px" onclick="save_update('+i+')" value="Update"><input type="submit" id="sub_emp" style="color:darkblue;padding:5px;border:1px solid #aaa;background:#D7006B;color: #FFF;font-weight:bold;box-shadow:1px 1px 5px #333;border-radius:3px" onclick="save_submit('+i+')" value="Submit"></td></tr></table><br/>'
+			saved_dataShow=saved_dataShow+'<table width="100%" style="border:1px solid #d3d3d3;border-radius:3px" align="center"><tr><td width="40%" style="padding-left:5px" align="left">'+showinfo+'</td><td width="40%" align="right" style="padding:2px"><input type="submit" id="sub_emp" style="color:darkblue;padding:5px;margin-right:10px;border:1px solid #aaa;background:#2291FF; color: #FFF;font-weight:bold;box-shadow:1px 1px 5px #333;border-radius:3px" onclick="save_update('+i+')" value="Update"><input type="submit" id="sub_emp" style="color:darkblue;padding:5px;border:1px solid #aaa;background:#2291FF;color: #FFF;font-weight:bold;box-shadow:1px 1px 5px #333;border-radius:3px" onclick="save_submit('+i+')" value="Submit"></td></tr></table><br/>'
 			//------------------Shima 2018/07/10 End------------------------------
 			
 		}
