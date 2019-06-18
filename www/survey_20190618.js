@@ -39,11 +39,9 @@ $.afui.useOSThemes=false;
 		
 			localStorage.picFlag=0
 		
-			//alert (localStorage.user_pass)
+			
 			if (localStorage.synced=='YES'){
-				$('#cid').val(localStorage.cid)
-				$('#user_id').val(localStorage.user_id)
-				$('#password').val(localStorage.user_pass)
+				$('#cm_supCode').val(localStorage.user_id)
 				$.afui.loadContent("#pageHomeView",true,true,'right');
 			}
 		
@@ -109,35 +107,13 @@ function onError(error) {
 
 
 function check_user() {
-		 
+		// alert ('sumaiya')
 		
 	     var cid=$("#cid").val();
 		 
-		 var user_idnew=$("#user_id").val();
+		 var user_id=$("#user_id").val();
 		 
 	     var user_pass=$("#user_pass").val();
-		 
-		 
-  		var user_idn = user_idnew.length;
-		
-		   if (user_idn=='11'){
-			   
-			var	user_id='88'
-				user_id=user_id+user_idnew
-				
-				
-		   }
-		   if(user_idn=='13'){
-			   user_id=user_idnew
-			  //alert(user_idn)
-		   }
-			   
-		  
-		 
-		 
-		 
-		 
-		 
 		
 	     if (cid=="" || cid==undefined || user_id=="" || user_id==undefined || user_pass=="" || user_pass==undefined){
 			 $("#error_login").html("Required CID, ID  and password");	
@@ -167,14 +143,11 @@ function check_user() {
 					
 				}
 				
-				
-			// var  apipath_base_photo_dm='http://127.0.0.1:8000/check_in/syncmobile_checkIn/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
-				 	 
-				// =========== ONLINE start===========	 
-			var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_checkin/get_path?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
-				// =========== ONLINE end===========	 
-			
 
+			//var  apipath_base_photo_dm='http://127.0.0.1:8000/check_in/syncmobile_checkIn/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
+				 	 
+				 	 
+			var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_checkin/get_path?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
 			//var  apipath_base_photo_dm='http://w02.yeapps.com/checkin/syncmobile_checkIn/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
 			//alert (apipath_base_photo_dm)
 			
@@ -204,13 +177,13 @@ function check_user() {
 				
 				
 				//======================================
-						//alert (localStorage.apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version+'&image='+localStorage.image+'&gallery='+localStorage.gallery+'&data_save_hide='+localStorage.data_save_hide)
+						//alert (localStorage.apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version+'&image='+localStorage.image+'&gallery='+localStorage.gallery)
 						$.ajax({
 							 type: 'POST',
 							 timeout: 30000,
 											
 							 
-							 url: localStorage.apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version+'&image='+localStorage.image+'&gallery='+localStorage.gallery+'&data_save_hide='+localStorage.data_save_hide,
+							 url: localStorage.apiPath+'check_user?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+encodeURIComponent(localStorage.user_pass)+'&syncCode='+localStorage.syncCode+'&d_version='+localStorage.d_version+'&up_version='+localStorage.up_version+'&image='+localStorage.image+'&gallery='+localStorage.gallery,
 							 success: function(result) {	
 									
 									if (result==''){		
@@ -250,7 +223,6 @@ function check_user() {
 			
 											localStorage.image=resultArray[5];
 											localStorage.gallery=resultArray[6];
-											localStorage.data_save_hide=resultArray[7];
 
 											//alert(localStorage.image)
 
@@ -272,15 +244,6 @@ function check_user() {
 												$(gallery_hide_div).hide()
 											}else {
 												$(gallery_hide_div).show()
-											}
-
-
-											if (localStorage.data_save_hide=='NO'){
-												
-												$(data_save_hide_div).hide()
-											}else {
-												
-												$(data_save_hide_div).show()
 											}
  
 													
@@ -429,10 +392,10 @@ function submit_data(){
 							upload_image(imageFileID1, imageFileName);
 							upload_image(imageFileID2, imageFileName1);
 							upload_image(imageFileID3, imageFileName2);
-						$("#success_msg").text("Submitted Successfully");
-//							
-//							
-////				==========================================================	
+							$("#success_msg").text("Submitted Successfully");
+							
+							
+//				==========================================================	
 						localStorage.picFlag=0	
 						var imageDiv="myImage1" 
 						var imageText="prPhoto1"
@@ -512,7 +475,7 @@ function savedVisit(){
 	var imageFileID2 =$("#prPhoto2").val();
 	var imageFileID3 =$("#prPhoto3").val();
 	if (imageFileID1=='' || imageFileID2=='' || imageFileID3==''){errorFlag_save=1}
-	//errorFlag_save=0
+	errorFlag_save=0
 	if (errorFlag_save==1){
 		$("#error_msg").text("Field Value and image is required");
 		
@@ -962,42 +925,18 @@ function homePage() {
 	  
 
 function login_page() {	
-	
 	$("#success_msg").text("");
 	$("#wait_image_login").hide();
 	$("#error_login").html("");
 	
 	$.afui.loadContent("#login",true,true,'right');
-	
 }	  
-
 
 
 function exit() {	
 	navigator.app.exitApp();
 }
 
-
-
-function exit_page() {
-	
-	localStorage.cid='';
-	localStorage.user_id='';
-	localStorage.user_pass='';
-	localStorage.synced=='NO'
-	
-	 
-	$("#loginButton").show();
-
-	$("#wait_image_login").hide();
-	
-	$("#cid").val('');
-	$("#user_id").val('');
-	$("#user_pass").val('');
-	
-	
-	$.afui.loadContent(".panel",true,true,'right');
-}
 
 
 
