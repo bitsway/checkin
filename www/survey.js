@@ -494,6 +494,7 @@ function savedVisit(){
 	var data_list=''
 	
 	var errorFlag_save=0
+	var errorFlag_save_image=0
 	
 	for (i=0; i<screensettingsdataListStr.length-1; i++){
 		DataShowList=screensettingsdataListStr[i].split('|')
@@ -511,9 +512,9 @@ function savedVisit(){
 	var imageFileID1 =$("#prPhoto1").val();
 	var imageFileID2 =$("#prPhoto2").val();
 	var imageFileID3 =$("#prPhoto3").val();
-	if (imageFileID1=='' || imageFileID2=='' || imageFileID3==''){errorFlag_save=1}
+	if (imageFileID1=='' || imageFileID2=='' || imageFileID3==''){errorFlag_save_image=1}
 	//errorFlag_save=0
-	if (errorFlag_save==1){
+	if  ((errorFlag_save==1)&(errorFlag_save_image==1)){
 		$("#error_msg").text("Field Value and image is required");
 		
 	}
