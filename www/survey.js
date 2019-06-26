@@ -32,7 +32,29 @@ $.afui.useOSThemes=false;
 			$('#screensettings_id').val('');
 	
 
- 		
+ 			
+			//====================================
+
+			var posStrsdata=localStorage.posStr			
+			posStrsdataListStr=posStrsdata.split(',');
+			$('#posStrCombo').empty();
+			var posStr=''
+			if (posStrsdata!=''){
+				for (j=0; j<posStrsdataListStr.length; j++)
+					{
+						posDataShowList=posStrsdataListStr[j].split('|')
+						var pos_id=posDataShowList[0]   //# pos id
+						var pos_name=posDataShowList[1]   //# pos name
+						var posStr_single=pos_id+'|'+pos_name;
+					
+						posStr='<option style="font-size:12px; color:#306161; background-color:#ECECFF" value="'+posStr_single+'"><font style="font-size:12px; color:#306161; background-color:#ECECFF">'+posStr_single+'</font></option>'
+					
+						 $('#posStrCombo').append(posStr);
+				}
+			}
+			
+			//========================================
+			
 			var screensettings_id_ob=$('#screensettings_id');				
 			screensettings_id_ob.empty()
 			screensettings_id_ob.append(localStorage.screensettingsdataShow);
@@ -251,6 +273,8 @@ function check_user() {
 											localStorage.image=resultArray[5];
 											localStorage.gallery=resultArray[6];
 											localStorage.data_save_hide=resultArray[7];
+											
+											localStorage.posStr=resultArray[8];
 
 											//alert(localStorage.image)
 
@@ -289,6 +313,30 @@ function check_user() {
 											screensettingsdataListStr=screensettingsdata.split('<rdrd>');
 			
 											var screensettingsdataShow=''
+											
+											
+											//====================================
+	
+											var posStrsdata=localStorage.posStr			
+											posStrsdataListStr=posStrsdata.split(',');
+											$('#posStrCombo').empty();
+											var posStr=''
+											if (posStrsdata!=''){
+												for (j=0; j<posStrsdataListStr.length; j++)
+													{
+														posDataShowList=posStrsdataListStr[j].split('|')
+														var pos_id=posDataShowList[0]   //# pos id
+														var pos_name=posDataShowList[1]   //# pos name
+														var posStr_single=pos_id+'|'+pos_name;
+													
+														posStr='<option style="font-size:12px; color:#306161; background-color:#ECECFF" value="'+posStr_single+'"><font style="font-size:12px; color:#306161; background-color:#ECECFF">'+posStr_single+'</font></option>'
+													
+														 $('#posStrCombo').append(posStr);
+												}
+											}
+											
+											//========================================
+											
 														//alert ('AA')
 														for (i=0; i<screensettingsdataListStr.length-1; i++)
 														
@@ -413,14 +461,15 @@ function submit_data(){
 		var imageFileName =tempTime.toString()+"_pss.jpg";
 		var imageFileName1 =tempTime1.toString()+"_pss1.jpg";
 		var imageFileName2 =tempTime2.toString()+"_pss2.jpg";
+		
+		var psoval=$("#posStrCombo").val();  
 
-
-		//alert  (localStorage.apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName)
+		//alert  (localStorage.apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude+'&psoval='+psoval)
 
 		$.ajax({
 			type:'POST',
 			timeout: 30000,
-			url:localStorage.apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude,
+			url:localStorage.apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude+'&psoval='+psoval,
 
 			success: function(result) {
 						if (result!==''){
@@ -773,29 +822,77 @@ function save_update(i){
 	
 	
 //				==========================================================	
-		localStorage.picFlag=0	
-		var imageDiv="myImage1" 
-		var imageText="prPhoto1"
-		var image = document.getElementById(imageDiv);
-		image.src = '';
-		imagePath = '';
-		$("#"+imageText).val(imagePath);
+
+	var imageFileName=saved_dataShowGet.split('&imageFileName=')[1].split('&imageFileName1=')[0]  
+	var imageFileName1=saved_dataShowGet.split('&imageFileName1=')[1].split('&imageFileName2=')[0]   
+	var imageFileName2=saved_dataShowGet.split('&imageFileName2=')[1].split('&imageFileID1=')[0]    
+	var imageFileID1=saved_dataShowGet.split('&imageFileID1=')[1].split('&imageFileID2=')[0]     
+	var imageFileID2=saved_dataShowGet.split('&imageFileID2=')[1].split('&imageFileID3=')[0]    
+	var imageFileID3=saved_dataShowGet.split('&imageFileID3=')[1]
+	
+	//alert (imageFileName)
+	//alert (imageFileName1)
+	//alert (imageFileName2)
+	
+	
+	if (imageFileID3==''){
+		localStorage.picFlag=2
+	}
+	else if (imageFileID2==''){
+		localStorage.picFlag=1
+	}
+	else {
+		localStorage.picFlag=0
+	}
+	
+	var imageDiv="myImage1" 
+	var imageText="prPhoto1"
+	var image = document.getElementById(imageDiv);
+	image.src = imageFileID1;
+	imagePath = imageFileID1;
+	$("#"+imageText).val(imagePath);
+	
+	
+	
+	var imageDiv2="myImage2"
+	var imageText2="prPhoto2"
+	var image2 = document.getElementById(imageDiv2);
+	image2.src = imageFileID2;
+	imagePath2 = imageFileID2;
+	$("#"+imageText2).val(imagePath2);
 		
 		
-		var imageDiv2="myImage2"
-		var imageText2="prPhoto2"
-		var image2 = document.getElementById(imageDiv2);
-		image2.src = '';
-		imagePath2 = '';
-		$("#"+imageText2).val(imagePath2);
-		
-		
-		var imageDiv3="myImage3"
-		var imageText3="prPhoto3"
-		var image3 = document.getElementById(imageDiv3);
-		image3.src = '';
-		imagePath3 = '';
-		$("#"+imageText3).val(imagePath3);
+	var imageDiv3="myImage3"
+	var imageText3="prPhoto3"
+	var image3 = document.getElementById(imageDiv3);
+	image3.src = imageFileID3;
+	imagePath3 = imageFileID3;
+	$("#"+imageText3).val(imagePath3);	
+
+
+		//localStorage.picFlag=0	
+//		var imageDiv="myImage1" 
+//		var imageText="prPhoto1"
+//		var image = document.getElementById(imageDiv);
+//		image.src = '';
+//		imagePath = '';
+//		$("#"+imageText).val(imagePath);
+//		
+//		
+//		var imageDiv2="myImage2"
+//		var imageText2="prPhoto2"
+//		var image2 = document.getElementById(imageDiv2);
+//		image2.src = '';
+//		imagePath2 = '';
+//		$("#"+imageText2).val(imagePath2);
+//		
+//		
+//		var imageDiv3="myImage3"
+//		var imageText3="prPhoto3"
+//		var image3 = document.getElementById(imageDiv3);
+//		image3.src = '';
+//		imagePath3 = '';
+//		$("#"+imageText3).val(imagePath3);
 
 //				==========================================================
 	
