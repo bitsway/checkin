@@ -40,6 +40,8 @@ $.afui.useOSThemes=false;
 			$('#posStrCombo').empty();
 			var posStr=''
 			if (posStrsdata!=''){
+				posStr='<option style="font-size:12px; color:#306161; background-color:#ECECFF" value=""><font style="font-size:12px; color:#306161; background-color:#ECECFF"></font></option>'
+				$('#posStrCombo').append(posStr);
 				for (j=0; j<posStrsdataListStr.length; j++)
 					{
 						posDataShowList=posStrsdataListStr[j].split('|')
@@ -323,6 +325,8 @@ function check_user() {
 											$('#posStrCombo').empty();
 											var posStr=''
 											if (posStrsdata!=''){
+												posStr='<option style="font-size:12px; color:#306161; background-color:#ECECFF" value=""><font style="font-size:12px; color:#306161; background-color:#ECECFF"></font></option>'
+												$('#posStrCombo').append(posStr);
 												for (j=0; j<posStrsdataListStr.length; j++)
 													{
 														posDataShowList=posStrsdataListStr[j].split('|')
