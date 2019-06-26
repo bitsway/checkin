@@ -181,6 +181,7 @@ function check_user() {
 			
 			localStorage.saved_data=''
 			
+			
 
 			
 			
@@ -222,7 +223,7 @@ function check_user() {
 				
 				localStorage.apiPath=apiPath
 				localStorage.apipath_image=apipath_image
-				
+				localStorage.picFlag=0
 				
 				
 				//======================================
@@ -508,7 +509,7 @@ function submit_data(){
 
 //				==========================================================
 							
-							
+							localStorage.picFlag=0
 							$.afui.loadContent("#msg_page",true,true,'right');
 							location.reload();
 						
