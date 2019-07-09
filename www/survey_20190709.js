@@ -30,43 +30,6 @@ $.afui.useOSThemes=false;
 	   	   		
 	   		$("#load_image").hide();
 			$('#screensettings_id').val('');
-
-		 // 20190307 START
-
-				if (localStorage.image=='NO'){
-
-					$('#image_hide_div').hide()
-				}else {
-					$('#image_hide_div').show()
-				}
-				
-
-				if (localStorage.gallery=='NO'){
-
-					$('#gallery_hide_div').hide()
-				}else {
-					$('#gallery_hide_div').show()
-				}
-
-
-				if (localStorage.data_save_hide=='NO'){
-					
-					$('#data_save_hide_div').hide()
-				}else {
-					
-					$('#data_save_hide_div').show()
-				}
-
-
-				if (localStorage.pos_hideStr=='NO'){
-					
-					$('#pos_hide_div').hide()
-				}else {
-					
-					$('#pos_hide_div').show()
-				}
-
-				 // =========End
 	
 
  			
@@ -170,7 +133,7 @@ function onError(error) {
 
 
 function check_user() {
-		
+		 
 		
 	     var cid=$("#cid").val();
 		 
@@ -230,14 +193,14 @@ function check_user() {
 				}
 				
 				
-			//var  apipath_base_photo_dm='http://127.0.0.1:8000/check_in/syncmobile_checkIn/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
+			// var  apipath_base_photo_dm='http://127.0.0.1:8000/check_in/syncmobile_checkIn/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
 				 	 
 				// =========== ONLINE start===========	 
-			 var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_checkin/get_path?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
+			//var  apipath_base_photo_dm='http://w02.yeapps.com/welcome/dmpath_checkin/get_path?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
 				// =========== ONLINE end===========	 
 			
 
-			//var  apipath_base_photo_dm='http://w02.yeapps.com/checkin/syncmobile_checkIn/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
+			var  apipath_base_photo_dm='http://w02.yeapps.com/checkin/syncmobile_checkIn/dmpath?CID='+localStorage.cid +'&HTTPPASS=e99business321cba'
 			//alert (apipath_base_photo_dm)
 			
 			$.ajax(apipath_base_photo_dm,{
@@ -315,55 +278,38 @@ function check_user() {
 											localStorage.data_save_hide=resultArray[7];
 											
 											localStorage.posStr=resultArray[8];
-        									
-        									 // 20190307 START
 
-											localStorage.pos_hideStr=resultArray[9];
-        									
-        									 // =========End
-
-											// alert(localStorage.pos_hideStr)
+											//alert(localStorage.image)
 
 			
 											localStorage.synced='YES';
 
 											
-        									 // 20190307 START
 
 											if (localStorage.image=='NO'){
 
-												$('#image_hide_div').hide()
+												$(image_hide_div).hide()
 											}else {
-												$('#image_hide_div').show()
+												$(image_hide_div).show()
 											}
 											
 
 											if (localStorage.gallery=='NO'){
 
-												$('#gallery_hide_div').hide()
+												$(gallery_hide_div).hide()
 											}else {
-												$('#gallery_hide_div').show()
+												$(gallery_hide_div).show()
 											}
 
 
 											if (localStorage.data_save_hide=='NO'){
 												
-												$('#data_save_hide_div').hide()
+												$(data_save_hide_div).hide()
 											}else {
 												
-												$('#data_save_hide_div').show()
-											}
-
-
-											if (localStorage.pos_hideStr=='NO'){
-												
-												$('#pos_hide_div').hide()
-											}else {
-												
-												$('#pos_hide_div').show()
+												$(data_save_hide_div).show()
 											}
  
-        									 // =========End
 													
 											var screensettingsdata=localStorage.screensettingsdata
 			
@@ -523,7 +469,7 @@ function submit_data(){
 		
 		var psoval=$("#posStrCombo").val();  
 
-		//alert  (localStorage.apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude+'&psoval='+psoval)
+		alert  (localStorage.apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude+'&psoval='+psoval)
 
 		$.ajax({
 			type:'POST',
