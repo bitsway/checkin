@@ -531,7 +531,11 @@ function submit_data(){
 			url:localStorage.apiPath+'dataSave?cid='+localStorage.cid+'&repId='+localStorage.user_id+'&password='+localStorage.user_pass+'&syncCode='+localStorage.syncCode+'&data_list='+data_list+'&imageFileName='+imageFileName+'&imageFileName1='+imageFileName1+'&imageFileName2='+imageFileName2+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude+'&psoval='+psoval,
 
 			success: function(result) {
-						if (result!==''){
+						if (result!=='Success'){
+							$("#success_msg").text(result);
+							
+						}
+						else{
 							
 							
 							upload_image(imageFileID1, imageFileName);
