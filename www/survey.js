@@ -537,7 +537,7 @@ function submit_data(){
 							upload_image(imageFileID1, imageFileName);
 							upload_image(imageFileID2, imageFileName1);
 							upload_image(imageFileID3, imageFileName2);
-						$("#success_msg").text("Submitted Successfully");
+							$("#success_msg").text(result);
 //							
 //							
 ////				==========================================================	
