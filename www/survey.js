@@ -252,6 +252,7 @@ function check_user() {
 			success:function(data, status,xhr){
 
 			if (status=='success'){	 
+				alert('DM Path success');
 				localStorage.base_url='';
 				
 				var dtaStr=data.replace('<start>','').replace('<end>','')
